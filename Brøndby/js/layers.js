@@ -19,28 +19,28 @@ export function addAllLayers(map, projection, fns) {
     const grp_kloakering = createGroup({ title: 'Kloakering', fold: 'close', depth: 1, container: grp_IKKEkort });
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Spildevandskloakeret.geojson",
+        folder_destination: "GeoJSON-data/Spildevandskloakeret.geojson",
         fill_color: "#375b9d", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Spildevands kloakeret", visible: true, z_index: 2,
         group_container: grp_kloakering
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Regnvandskloakeret.geojson",
+        folder_destination: "GeoJSON-data/Regnvandskloakeret.geojson",
         fill_color: "#2bbcd5", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Regnvands kloakeret", visible: true, z_index: 2, hidden: true,
         group_container: grp_kloakering
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Overfladevandskloakeret.geojson",
+        folder_destination: "GeoJSON-data/Overfladevandskloakeret.geojson",
         fill_color: "#2bbcd5", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Overfladevands kloakeret", visible: true, z_index: 2, hidden: true,
         group_container: grp_kloakering
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Ingen kloakering.geojson",
+        folder_destination: "GeoJSON-data/Ingen_kloakering.geojson",
         fill_color: "#78a08c", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Ingen kloakering", visible: true, z_index: 2,
         group_container: grp_kloakering
@@ -48,72 +48,72 @@ export function addAllLayers(map, projection, fns) {
 
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Vedtaget Seperatkloakering.geojson",
+        folder_destination: "GeoJSON-data/Vedtaget_Seperatkloakering.geojson",
         fill_color: "#e49f83", stroke_color: "#e49f83", stroke_width: 1,
         fill_alpha: 0.85, title: "Regnvands kloakeret", visible: true, z_index: 2, hidden: true,
         group_container: grp_kloakering
-    }, projection);    
+    }, projection);     
 
     // ---- Måske ikke kort ----
     const grp_MaskeIKKEkort = createGroup({ title: '"MÅSKE IKKE" kort', fold: 'close' });
     
     const grp_fredede = createGroup({ title: 'Gamle, Fredede & Natur områder', fold: 'close', depth: 1, container: grp_MaskeIKKEkort });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/fredede områder.geojson",
+        folder_destination: "GeoJSON-data/Fredede_omraader.geojson",
         fill_color: "rgba(165,207,235,0.7)", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Fredede Områder", visible: false, z_index: 2,
         group_container: grp_fredede
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Habitat områder.geojson",
+        folder_destination: "GeoJSON-data/Habitat_omraader.geojson",
         fill_color: "#58826c", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Habitat områder", visible: false, z_index: 2, hidden: true,
         group_container: grp_fredede
-    }, projection);    
+    }, projection); 
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Enge og Moser (1870-1899).geojson",
+        folder_destination: "GeoJSON-data/Enge_og_Moser_(1870-1899).geojson",
         fill_color: "rgba(208,231,215,0.7)", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Enge & Moser 1870", visible: false, z_index: 2,
         group_container: grp_fredede
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GEOJSON data/Vådbundsområder omkring 1700-tallet.geojson",
+        folder_destination: "GeoJSON-data/Vaadbundsomraader_omkring_1700-tallet.geojson",
         fill_color: "#c6ef75", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Vådbundsområder omkring 1700-tallet", visible: false, z_index: 2,
         group_container: grp_fredede
     }, projection);
     
     addGraduatedLineLayer(map, {
-        folder_destination: "GeoJSON data/Gammel kystlinje (1870-1899).geojson",
+        folder_destination: "GeoJSON-data/Gammel_kystlinje_(1870-1899).geojson",
         title: "Gammel kystlinje (1870-1899)", field: "fid", color: "#4e59a0",
-        min_width: 3, max_width: 3, breaks: [1, 1], legend_steps: 1,
+        min_width: 3, max_width: 3, breaks: [1, 1], legend_steps: 1, hidden: true,
         fill_alpha: 0.85, z_index: 1, visible: false,
         group_container: grp_fredede
-    }, projection);    
+    }, projection);  
 
     addGraduatedLineLayer(map, {
-        folder_destination: "GeoJSON data/Rørlagte vandløb.geojson",
+        folder_destination: "GeoJSON-data/Roerlagte_vandloeb.geojson",
         title: "Rørlagte vandløb", field: "fid", color: "#efb258",
         min_width: 3, max_width: 3, breaks: [1, 1], legend_steps: 1,
         fill_alpha: 0.85, z_index: 1, visible: false, hidden: true,
         group_container: grp_fredede
-    }, projection);  
+    }, projection);   
     
 
 
     const grp_jordforurening = createGroup({ title: 'Jordforurening', fold: 'close', depth: 1, container: grp_MaskeIKKEkort });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Jordforurening videnniveau 1 (V1).geojson",
+        folder_destination: "GeoJSON-data/Jordforurening_videnniveau_1_(V1).geojson",
         fill_color: "#b58840", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Jordforurening videnniveau 1 (V1)", visible: false, z_index: 2,
         group_container: grp_jordforurening
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Jordforurening videnniveau 2 (V2).geojson",
+        folder_destination: "GeoJSON-data/Jordforurening_videnniveau_2_(V2).geojson",
         fill_color: "#f0ceae", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Jordforurening videnniveau 2 (V2)", visible: false, z_index: 2,
         group_container: grp_jordforurening
@@ -121,35 +121,35 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_soer = createGroup({ title: 'Søer', fold: 'close', depth: 1, container: grp_MaskeIKKEkort });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/søer.geojson",
+        folder_destination: "GeoJSON-data/Soeer.geojson",
         fill_color: "#383c6f", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Søer", visible: false, z_index: 5,
         group_container: grp_soer
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Søer 2m buffer.geojson",
+        folder_destination: "GeoJSON-data/Soeer_2m_buffer.geojson",
         fill_color: "#484c8e", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Søer 2m Buffer", visible: false, z_index: 4,
         group_container: grp_soer
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Søer 10m buffer.geojson",
+        folder_destination: "GeoJSON-data/Soeer_10m_buffer.geojson",
         fill_color: "#6e73af", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Søer 10m Buffer", visible: false, z_index: 3,
         group_container: grp_soer
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Søer 20m buffer.geojson",
+        folder_destination: "GeoJSON-data/Soeer_20m_buffer.geojson",
         fill_color: "#c5c6df", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Søer 20m Buffer", visible: false, z_index: 2,
         group_container: grp_soer
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Søer 100m buffer.geojson",
+        folder_destination: "GeoJSON-data/Soeer_100m_buffer.geojson",
         fill_color: "#ebecf4", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Søer 100m Buffer", visible: false, z_index: 1,
         group_container: grp_soer
@@ -157,35 +157,35 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_vandloeb = createGroup({ title: 'Vandløb', fold: 'close', depth: 1, container: grp_MaskeIKKEkort });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/vandløb.geojson",
+        folder_destination: "GeoJSON-data/Vandloeb.geojson",
         fill_color: "#6294b7", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Vandløb", visible: false, z_index: 5,
         group_container: grp_vandloeb
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Vandløb 2m buffer.geojson",
+        folder_destination: "GeoJSON-data/Vandloeb_2m_buffer.geojson",
         fill_color: "#76b0dc", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Vandløb 2m Buffer", visible: false, z_index: 4,
         group_container: grp_vandloeb
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Vandløb 10m buffer.geojson",
+        folder_destination: "GeoJSON-data/Vandloeb_10m_buffer.geojson",
         fill_color: "#a5cfeb", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Vandløb 10m Buffer", visible: false, z_index: 3,
         group_container: grp_vandloeb
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Vandløb 20m buffer.geojson",
+        folder_destination: "GeoJSON-data/Vandloeb_20m_buffer.geojson",
         fill_color: "#dbecf6", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Vandløb 20m Buffer", visible: false, z_index: 2,
         group_container: grp_vandloeb
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Vandløb 100m buffer.geojson",
+        folder_destination: "GeoJSON-data/Vandloeb_100m_buffer.geojson",
         fill_color: "#edf6fb", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Vandløb 100m Buffer", visible: false, z_index: 1,
         group_container: grp_vandloeb
@@ -204,21 +204,21 @@ export function addAllLayers(map, projection, fns) {
     
     const grp_Bygningsattributter = createGroup({ title: 'Bygningsattributter (zoom, for at aktivere)', fold: 'close', depth: 1, container: grp_analyserdata });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Bygninger med kælder.geojson",
+        folder_destination: "GeoJSON-data/Bygninger_med_kaelder.geojson",
         fill_color: "#d94b54", fill_alpha: 0.50, stroke_color: "rgb(255, 0, 0)", stroke_width: 1,
         title: "Bygninger med kælder", max_resolution: 3, visible: false, z_index: 2,
         group_container: grp_Bygningsattributter
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Bygninger opført efter 1973.geojson",
+        folder_destination: "GeoJSON-data/Bygninger_opfoert_efter_1973.geojson",
         fill_color: "#838fe4", fill_alpha: 0.50, stroke_color: "rgb(13, 0, 199)", stroke_width: 1,
         title: "Bygninger opført efter 1973", max_resolution: 3, visible: false, z_index: 2,
         group_container: grp_Bygningsattributter
     }, projection);
 
     addCategorizedLayer(map, {
-        folder_destination: "GeoJSON data/Bygningsanvendelse.geojson",
+        folder_destination: "GeoJSON-data/Bygningsanvendelse.geojson",
         field: "BBR_nogle_rettet_overkatagori",
         categories: [
             { value: "Bygninger til helårsbeboelse", fill_color: "#e4838f", label: "Bygninger til helårsbeboelse" },
@@ -245,7 +245,7 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_skadesomkostninger = createGroup({ title: 'Indledende skadesberegninger - Gennemsnitlig skadesomkostninger før tiltag', fold: 'close', depth: 1, container: grp_analyserdata });
     const { layer: lyr_bygninger, source: jsonSource_bygninger } = addThematicLayer(map, {
-        folder_destination: "GeoJSON data/Indledende skadesberegninger - Gennemsnitlig skadesomkostninger før tiltag.geojson",
+        folder_destination: "GeoJSON-data/Indledende_skadesberegninger_-_Gennemsnitlig_skadesomkostninger_foer_tiltag.geojson",
         title: "Gns. skadesomkostninger før tiltag [DKK/år]",
         start_color: "#ffffb2", end_color: "#bd0026", field: "_Mean_annual_damage_cost",
         stroke_color: "rgba(0,0,0,0.5)", stroke_width: 0.5, num_classes: 7,
@@ -262,7 +262,7 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_risikoTGVGEO = createGroup({ title: 'Risiko for terrænnært grundvand (GEO)', fold: 'close', depth: 1, container: grp_analyserdata });
     addCategorizedLayer(map, {
-        folder_destination: "GeoJSON data/Risiko for terrænnært grundvand 1m.u.t. (GEO).geojson",
+        folder_destination: "GeoJSON-data/Terraennaert_grundvand_1m_(GEO).geojson",
         field: "DN",
         categories: [
             { value: "1", fill_color: "#00ccffad", label: "Vinter" },
@@ -275,7 +275,7 @@ export function addAllLayers(map, projection, fns) {
     }, projection);
 
     addCategorizedLayer(map, {
-        folder_destination: "GeoJSON data/Risiko for terrænnært grundvand 2m.u.t. (GEO).geojson",
+        folder_destination: "GeoJSON-data/Terraennaert_grundvand_2m_(GEO).geojson",
         field: "DN",
         categories: [
             { value: "1", fill_color: "#00ccffad", label: "Vinter" },
@@ -291,57 +291,57 @@ export function addAllLayers(map, projection, fns) {
     
     const grp_HIPsommer = createGroup({ title: 'Terrænnært grundvand sommermiddel [m under terræn] (HIP)', fold: 'close', depth: 2, container: grp_HIP });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/0-1 m.geojson",
+        folder_destination: "GeoJSON-data/0-1_m.geojson",
         fill_color: "#526e97", stroke_color: "rgba(0,0,0,0)", fill_alpha: 0.85, stroke_width: 0,
         title: "0-1m", visible: false, z_index: 2, group_container: grp_HIPsommer
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/1-2 m.geojson",
+        folder_destination: "GeoJSON-data/1-2_m.geojson",
         fill_color: "#78b0d6", stroke_color: "rgba(0,0,0,0)", fill_alpha: 0.85, stroke_width: 0,
         title: "1-2m", visible: false, z_index: 2, group_container: grp_HIPsommer
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/2-3 m.geojson",
+        folder_destination: "GeoJSON-data/2-3_m.geojson",
         fill_color: "#c7dfee", stroke_color: "rgba(0,0,0,0)", fill_alpha: 0.85, stroke_width: 0,
         title: "2-3m", visible: false, z_index: 2, group_container: grp_HIPsommer
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/3-7 m.geojson",
+        folder_destination: "GeoJSON-data/3-7_m.geojson",
         fill_color: "#f9fcff", fill_alpha: 0.85, stroke_color: "rgba(0,0,0,0)", stroke_width: 0,
         title: "3-7m", visible: false, z_index: 2, group_container: grp_HIPsommer
     }, projection);
 
     const grp_HIPvinter = createGroup({ title: 'Terrænnært grundvand vintermiddel [m under terræn] (HIP)', fold: 'close', depth: 2, container: grp_HIP });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/0-1 m_1.geojson",
+        folder_destination: "GeoJSON-data/0-1_m_1.geojson",
         fill_color: "#526e97", stroke_color: "rgba(0,0,0,0)", fill_alpha: 0.85, stroke_width: 0,
         title: "0-1m", visible: false, z_index: 2, group_container: grp_HIPvinter
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/1-2 m_1.geojson",
+        folder_destination: "GeoJSON-data/1-2_m_1.geojson",
         fill_color: "#78b0d6", stroke_color: "rgba(0,0,0,0)", fill_alpha: 0.85, stroke_width: 0,
         title: "1-2m", visible: false, z_index: 2, group_container: grp_HIPvinter
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/2-3 m_1.geojson",
+        folder_destination: "GeoJSON-data/2-3_m_1.geojson",
         fill_color: "#c7dfee", stroke_color: "rgba(0,0,0,0)", fill_alpha: 0.85, stroke_width: 0,
         title: "2-3m", visible: false, z_index: 2, group_container: grp_HIPvinter
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/3-7 m_1.geojson",
+        folder_destination: "GeoJSON-data/3-7_m_1.geojson",
         fill_color: "#f9fcff", fill_alpha: 0.85, stroke_color: "rgba(0,0,0,0)", stroke_width: 0,
         title: "3-7m", visible: false, z_index: 2, group_container: grp_HIPvinter
     }, projection);
 
     const grp_middelvariationer = createGroup({ title: 'Middelvarigheder iflg. HIP', fold: 'close', depth: 1, container: grp_analyserdata });
     addThematicLayer(map, {
-        folder_destination: "GeoJSON data/Middelvarigheder 1 m.u.t..geojson",
+        folder_destination: "GeoJSON-data/Middelvarigheder_1_m.u.t..geojson",
         title: "Middelvarigheder 1 m.u.t.", start_color: "#f7fbff", end_color: "#08306b", field: "1m",
         stroke_color: "rgba(0,0,0,0)", stroke_width: 0, gradient: true, breaks: [0, 366],
         legend_steps: 6, fill_alpha: 0.85, z_index: 1, visible: false,
@@ -353,7 +353,7 @@ export function addAllLayers(map, projection, fns) {
     }, projection);
 
     addThematicLayer(map, {
-        folder_destination: "GeoJSON data/Middelvarigheder 2 m.u.t..geojson",
+        folder_destination: "GeoJSON-data/Middelvarigheder_2_m.u.t..geojson",
         title: "Middelvarigheder 2 m.u.t.", start_color: "#f7fbff", end_color: "#08306b", field: "2m",
         stroke_color: "rgba(0,0,0,0)", stroke_width: 0, gradient: true, breaks: [0, 366],
         legend_steps: 6, fill_alpha: 0.85, z_index: 1, visible: false,
@@ -366,7 +366,7 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_pumpedevandfraktioner = createGroup({ title: 'Pumpede vandfraktioner', fold: 'close', depth: 1, container: grp_analyserdata });
     addPieChartLayer(map, {
-        folder_destination: "GeoJSON data/Pumpede vandfraktioner.geojson",
+        folder_destination: "GeoJSON-data/Pumpede_vandfraktioner.geojson",
         title: "Pumpede vandfraktioner",
         fields: [
             { field: 'gw', color: '#83d585', label: 'Indsivning' },
@@ -388,7 +388,7 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_vandoplande = createGroup({ title: 'Vandoplande', fold: 'close', depth: 1, hidden: true, container: grp_analyserdata });
     addCategorizedLayer(map, {
-        folder_destination: "GeoJSON data/Vandoplande.geojson",
+        folder_destination: "GeoJSON-data/Vandoplande.geojson",
         field: "fid",
         categories: [
             { value: "1", fill_color: "#00445e", label: "1" },
@@ -400,7 +400,7 @@ export function addAllLayers(map, projection, fns) {
     }, projection);
 
     addGraduatedLineLayer(map, {
-        folder_destination: "GeoJSON data/Strømningsveje.geojson",
+        folder_destination: "GeoJSON-data/Stroemningsveje.geojson",
         title: "Strømningsveje", field: "flow", color: "#00445e",
         min_width: 0.5, max_width: 20, breaks: [0, 1000000], legend_steps: 4,
         fill_alpha: 0.85, z_index: 1, visible: false, maxResolution: 3, hidden: true,
@@ -409,7 +409,7 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_boringer = createGroup({ title: 'Boringer (GEUS Jupiter Database)', fold: 'close', depth: 1, container: grp_analyserdata });
     addClassedPointLayer(map, {
-        folder_destination: "GeoJSON data/Pejledata - Afvigelse af HIP sommer.geojson",
+        folder_destination: "GeoJSON-data/Pejledata_-_Afvigelse_af_HIP_sommer.geojson",
         title: "Pejledata - Afvigelse af HIP sommer", start_color: "#ff0000", end_color: "#31d100",
         field: "deviation_sommer", stroke_color: "#ffffff", stroke_width: 1, radius: 4,
         breaks: [-27, -3, -2, -1, 0], fill_alpha: 0.85, z_index: 1, visible: false,
@@ -417,7 +417,7 @@ export function addAllLayers(map, projection, fns) {
     }, projection);
 
     addClassedPointLayer(map, {
-        folder_destination: "GeoJSON data/Pejledata - Afvigelse af HIP vinter.geojson",
+        folder_destination: "GeoJSON-data/Pejledata_-_Afvigelse_af_HIP_vinter.geojson",
         title: "Pejledata - Afvigelse af HIP vinter", start_color: "#ff0000", end_color: "#31d100",
         field: "deviation_vinter", stroke_color: "#ffffff", stroke_width: 1, radius: 4,
         breaks: [-27, -3, -2, -1, 0], fill_alpha: 0.85, z_index: 1, visible: false,
@@ -425,7 +425,7 @@ export function addAllLayers(map, projection, fns) {
     }, projection);
 
     addClassedPointLayer(map, {
-        folder_destination: "GeoJSON data/Boringer (dybde i m).geojson",
+        folder_destination: "GeoJSON-data/Boringer_(dybde_i_m).geojson",
         title: "Boringer (dybde i m)", start_color: "#ffffff", end_color: "#58826c",
         field: "dybde_num", stroke_color: "#ffffff", stroke_width: 1, radius: 4,
         breaks: [0, 6, 12, 18, 30], fill_alpha: 0.85, z_index: 1, visible: false,
@@ -434,7 +434,7 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_risikosskaderGEO = createGroup({ title: 'Risiko for sætningsskader (GEO)', fold: 'close', depth: 1, container: grp_analyserdata });
     addCategorizedLayer(map, {
-        folder_destination: "GeoJSON data/Risiko for sætningsskader (GEO).geojson",
+        folder_destination: "GeoJSON-data/Risiko_for_saetningsskader_(GEO).geojson",
         field: "DN",
         categories: [
             { value: "27", fill_color: "#66df1b", fill_alpha: 0.85, label: "0-0,01" },
@@ -449,101 +449,95 @@ export function addAllLayers(map, projection, fns) {
     }, projection);
 
 
-    const grp_Risikohavvandindsivning = createGroup({ title: 'Risiko for havvandsindsivning', fold: 'close', depth: 1, container: grp_analyserdata });
+    const grp_Risikohavvandindsivning = createGroup({ title: 'Risiko for havvandsindsivning', fold: 'close', depth: 1, hidden: true, container: grp_analyserdata });
 
     addCategorizedLayer(map, {
-        folder_destination: "GeoJSON data/Risiko for havvandsindsivning.geojson",
+        folder_destination: "GeoJSON-data/Risiko_for_havvandsindsivning.geojson",
         field: "DN",
         categories: [
             { value: "0", fill_color: "#e47983", fill_alpha: 0.85, label: "Risiko for havvandsindsivning" },
         ],
         default_fill_color: "#ffffff00", stroke_color: "#ffffff00", stroke_width: 0, fill_alpha: 0.85,
-        title: "Risiko for havvandsindsivning", z_index: 1, visible: false,
+        title: "Risiko for havvandsindsivning", z_index: 1, visible: false, hidden: true,
         group_container: grp_Risikohavvandindsivning
     }, projection);    
 
     const grp_Risikooversvom = createGroup({ title: 'Risiko for oversvømmelse (Kystdirektoratet)', fold: 'close', depth: 1, container: grp_analyserdata });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Risiko for oversvømmelse (Kystdirektoratet).geojson",
+        folder_destination: "GeoJSON-data/Risiko_for_oversvoemmelse_(Kystdirektoratet).geojson",
         fill_color: "#c43c39", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Risiko for oversvømmelse (Kystdirektoratet)", visible: false, z_index: 1,
         group_container: grp_Risikooversvom
     }, projection);
 
+
     const grp_geomorfologi = createGroup({ title: 'Geomorfologi (GEUS)', fold: 'close', depth: 1, container: grp_analyserdata });
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Bundmoræneflade.geojson",
+        folder_destination: "GeoJSON-data/Bundmoraeneflade.geojson",
         fill_color: "#b26400", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Bundmoræneflade", visible: false, z_index: 1,
         group_container: grp_geomorfologi
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Erosionsdal.geojson",
+        folder_destination: "GeoJSON-data/Erosionsdal.geojson",
         fill_color: "#7ecc00", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Erosionsdal", visible: false, z_index: 1, hidden: true,
         group_container: grp_geomorfologi
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Dødislandskab.geojson",
-        fill_color: "#dab800", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
-        title: "Dødislandskab", visible: false, z_index: 1, hidden: true,
-        group_container: grp_geomorfologi
-    }, projection);
-
-    addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Strandvold.geojson",
+        folder_destination: "GeoJSON-data/Strandvold.geojson",
         fill_color: "#4cccfe", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Strandvold", visible: false, z_index: 1,
         group_container: grp_geomorfologi
     }, projection);   
     
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Mose.geojson",
+        folder_destination: "GeoJSON-data/Mose.geojson",
         fill_color: "#408016", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Mose", visible: false, z_index: 1, hidden: true,
         group_container: grp_geomorfologi
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Marin Flade.geojson",
+        folder_destination: "GeoJSON-data/Marin_flade.geojson",
         fill_color: "#b1e4fe", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Marin Flade", visible: false, z_index: 1,
         group_container: grp_geomorfologi
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Sø.geojson",
+        folder_destination: "GeoJSON-data/Soe.geojson",
         fill_color: "#fcfcfc", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Sø", visible: false, z_index: 1,
         group_container: grp_geomorfologi
     }, projection);     
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Tunneldal.geojson",
+        folder_destination: "GeoJSON-data/Tunneldal.geojson",
         fill_color: "#97ad7e", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Tunneldal", visible: false, z_index: 1, hidden: true,
         group_container: grp_geomorfologi
     }, projection); 
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Tørlagt marint forland.geojson",
+        folder_destination: "GeoJSON-data/Toerlagt_marint_forland.geojson",
         fill_color: "#beffe8", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
-        title: "Tørlagt marint forland", visible: false, z_index: 1, hidden: true,
+        title: "Tørlagt marint forland", visible: false, z_index: 1,  hidden: true,
         group_container: grp_geomorfologi
     }, projection); 
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Isoverskrevet randmoræne.geojson",
+        folder_destination: "GeoJSON-data/Isoverskrevet_randmoraene.geojson",
         fill_color: "#897044", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Isoverskrevet randmoræne", visible: false, z_index: 1, hidden: true,
         group_container: grp_geomorfologi
     }, projection); 
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Antropogent landskab.geojson",
+        folder_destination: "GeoJSON-data/Antropogent_landskab.geojson",
         fill_color: "#cccccc", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Antropogent landskab", visible: false, z_index: 1,
         group_container: grp_geomorfologi
@@ -552,35 +546,35 @@ export function addAllLayers(map, projection, fns) {
     const grp_projektplanflader = createGroup({ title: 'Projekt- og Planflader', fold: 'close',});
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Projektflade Varme.geojson",
+        folder_destination: "GeoJSON-data/Projektflade_Varme.geojson",
         fill_color: "#662ccd", stroke_color: "rgb(127, 0, 177)", stroke_width: 0, fill_alpha: 0.85,
         title: "Projektflade Varme", visible: false, z_index: 1, hidden: true,
         group_container: grp_projektplanflader
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Projektflade Vand.geojson",
+        folder_destination: "GeoJSON-data/Projektflade_Vand.geojson",
         fill_color: "#66c4cd", stroke_color: "rgb(0, 120, 218)", stroke_width: 0, fill_alpha: 0.85,
         title: "Projektflade Vand", visible: false, z_index: 1,
         group_container: grp_projektplanflader
     }, projection);    
     
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Projektflade Spildevand.geojson",
+        folder_destination: "GeoJSON-data/Projektflade_Spildevand.geojson",
         fill_color: "#397c33", stroke_color: "rgba(10, 61, 0, 0.43)", stroke_width: 0, fill_alpha: 0.85,
         title: "Projektflade Spildevand", visible: false, z_index: 1,
         group_container: grp_projektplanflader
     }, projection);
 
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/Planflade vand.geojson",
+        folder_destination: "GeoJSON-data/Planflade_vand.geojson",
         fill_color: "#00bebe", stroke_color: "rgb(255, 255, 255)", stroke_width: 0, fill_alpha: 0.85,
         title: "Planflade vand", visible: false, z_index: 1, hidden: true,
         group_container: grp_projektplanflader
     }, projection);    
     
     addCategorizedLayer(map, {
-        folder_destination: "GeoJSON data/Planflade Spildevand.geojson",
+        folder_destination: "GeoJSON-data/Planflade_spildevand.geojson",
         field: "STYLE_REGE",
         categories: [
             { value: "Anlægsprojekter", fill_color: "#34cb00", fill_alpha: 0.85, label: "Anlægsprojekt" },
@@ -595,7 +589,7 @@ export function addAllLayers(map, projection, fns) {
     // ---- omrids ----
     const grp_baggrund = createGroup({ title: '', fold: 'close', hidden: true });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/brøndby.geojson",
+        folder_destination: "GeoJSON-data/Broendby.geojson",
         fill_color: "rgba(255, 255, 255, 0.6)", stroke_color: "rgba(0,0,0,1)", stroke_width: 2,
         title: "Omrids", z_index: 2, group_container: grp_baggrund, hidden: true
     }, projection);

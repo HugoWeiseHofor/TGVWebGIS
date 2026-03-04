@@ -121,7 +121,7 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_soer = createGroup({ title: 'Søer', fold: 'close', depth: 1, container: grp_MaskeIKKEkort });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON-data/soeer.geojson",
+        folder_destination: "GeoJSON-data/Soeer.geojson",
         fill_color: "#383c6f", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Søer", visible: false, z_index: 5,
         group_container: grp_soer
