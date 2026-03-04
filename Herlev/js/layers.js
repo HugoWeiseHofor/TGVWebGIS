@@ -588,7 +588,7 @@ export function addAllLayers(map, projection, fns) {
     // ---- omrids ----
     const grp_baggrund = createGroup({ title: '', fold: 'close', hidden: true });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON data/herlev.geojson",
+        folder_destination: "GeoJSON data/Herlev.geojson",
         fill_color: "rgba(255, 255, 255, 0.6)", stroke_color: "rgba(0,0,0,1)", stroke_width: 2,
         title: "Omrids", z_index: 2, group_container: grp_baggrund, hidden: true
     }, projection);
