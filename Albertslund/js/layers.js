@@ -59,7 +59,7 @@ export function addAllLayers(map, projection, fns) {
     
     const grp_fredede = createGroup({ title: 'Gamle, Fredede & Natur områder', fold: 'close', depth: 1, container: grp_MaskeIKKEkort });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON-data/fredede_omraader.geojson",
+        folder_destination: "GeoJSON-data/Fredede_omraader.geojson",
         fill_color: "rgba(165,207,235,0.7)", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Fredede Områder", visible: false, z_index: 2,
         group_container: grp_fredede
@@ -157,7 +157,7 @@ export function addAllLayers(map, projection, fns) {
 
     const grp_vandloeb = createGroup({ title: 'Vandløb', fold: 'close', depth: 1, container: grp_MaskeIKKEkort });
     addSingleColorLayer(map, {
-        folder_destination: "GeoJSON-data/vandløb.geojson",
+        folder_destination: "GeoJSON-data/Vandloeb.geojson",
         fill_color: "#6294b7", stroke_color: "rgba(0,0,0,1)", stroke_width: 0,
         fill_alpha: 0.85, title: "Vandløb", visible: false, z_index: 5,
         group_container: grp_vandloeb
