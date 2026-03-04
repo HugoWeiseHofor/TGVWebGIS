@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Marin_flade",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::25832" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "tsym": 25, "version": "Version 3, 2022", "landscape": "Marine plain", "landskab": "Marin flade", "shape_leng": 18264.102153899999, "ruleid": 21, "overfoerse": "2022-08-30T00:00:00", "st_area_sh": 4788288.7657199996, "st_perimet": 18264.102153899999 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 710289.612700000405312, 6171373.034800000488758 ], [ 710303.763899999670684, 6171426.5088 ], [ 710323.917378351674415, 6171460.912610951811075 ], [ 710315.74, 6171436.17 ], [ 710301.319999999948777, 6171391.190000000409782 ], [ 710292.165535711450502, 6171362.127232188358903 ], [ 710289.612700000405312, 6171373.034800000488758 ] ] ] } }
+]
+}
