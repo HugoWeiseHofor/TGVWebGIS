@@ -124,6 +124,11 @@ export function addAllLayers(map, projection, fns) {
     const grp_risikosskaderGEO = createGroup({ title: 'Risiko for sætningsskader (GEO)', fold: 'close', depth: 1, container: grp_analyserdata });
     addCategorizedLayer(map, { ...styles.settlement_risk, folder_destination: 'GeoJSON-data/Risiko_for_saetningsskader_(GEO).geojson', visible: false, group_container: grp_risikosskaderGEO }, projection);
 
+    const grp_Loakl_draening_og_nedsivning = createGroup({ title: 'Lokal dræning og nedsivning, zoom for at aktivere', fold: 'close', depth: 1, container: grp_analyserdata });
+    addSingleColorLayer(map, { ...styles.Matrikler_med_draen,            folder_destination: 'GeoJSON-data/matrikler_med_draen.geojson',                visible: false, group_container: grp_Loakl_draening_og_nedsivning }, projection);
+    addSingleColorLayer(map, { ...styles.Nedsivningsanlaeg,              folder_destination: 'GeoJSON-data/nedsivningsanlaeg.geojson',                  visible: false, group_container: grp_Loakl_draening_og_nedsivning }, projection);
+    addSingleColorLayer(map, { ...styles.Matrikler_med_lokal_nedsivning, folder_destination: 'GeoJSON-data/matrikler_med_lokal_nedsivning.geojson',     visible: false, group_container: grp_Loakl_draening_og_nedsivning }, projection);
+
     const grp_Risikohavvandindsivning = createGroup({ title: 'Risiko for havvandsindsivning', fold: 'close', depth: 1, hidden: true, container: grp_analyserdata });
     addCategorizedLayer(map, { ...styles.seawater_intrusion, folder_destination: 'GeoJSON-data/Risiko_for_havvandsindsivning.geojson', visible: false, group_container: grp_Risikohavvandindsivning }, projection);
 

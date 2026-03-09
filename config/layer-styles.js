@@ -419,4 +419,24 @@ export const styles = {
         { field: "klasse", label: "katagori" },
     ]
     },
+
+    // København
+    Matrikler_med_draen: {
+        title: 'Matrikler med dræn',
+        fill_color: '#f1bd7e', fill_alpha: 0.85, stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        z_index: 2, max_resolution: 4,
+    },
+
+    Matrikler_med_lokal_nedsivning: {
+        title: 'Matrikler med lokal nedsivning',
+        fill_color: '#8ebdc6', fill_alpha: 0.85, stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        z_index: 2, max_resolution: 4,
+    },
+
+
+    Nedsivningsanlaeg: {
+        title: 'Nedsivningsanlæg',
+        fill_color: '#ded031', fill_alpha: 0.85, stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        z_index: 2, max_resolution: 4,
+    },
 };
