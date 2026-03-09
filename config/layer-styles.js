@@ -26,6 +26,11 @@ export const styles = {
         fill_color: '#375b9d', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
         fill_alpha: 0.85, z_index: 2
     },
+    sewage_spildevand_road: {
+        title: 'Kun vejvands- og spildevandskloakeret',
+        fill_color: '#375b9d', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
     sewage_regnvand: {
         title: 'Regnvands kloakeret',
         fill_color: '#2bbcd5', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
@@ -46,6 +51,7 @@ export const styles = {
         fill_color: '#e49f83', stroke_color: '#e49f83', stroke_width: 1,
         fill_alpha: 0.85, z_index: 2
     },
+
 
     // ================================================================
     // Natur – Fredede & gamle områder

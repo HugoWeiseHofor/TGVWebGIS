@@ -27,11 +27,8 @@ export function addAllLayers(map, projection, fns) {
     const grp_IKKEkort   = createGroup({ title: '"IKKE" kort', fold: 'close' });
     const grp_kloakering = createGroup({ title: 'Kloakering', fold: 'close', depth: 1, container: grp_IKKEkort });
 
-    addSingleColorLayer(map, { ...styles.sewage_spildevand,       folder_destination: 'GeoJSON-data/Spildevandskloakeret.geojson',    visible: true,  hidden: true,  group_container: grp_kloakering }, projection);
-    addSingleColorLayer(map, { ...styles.sewage_regnvand,         folder_destination: 'GeoJSON-data/Regnvandskloakeret.geojson',       visible: true,  hidden: true,  group_container: grp_kloakering }, projection);
-    addSingleColorLayer(map, { ...styles.sewage_overflade,        folder_destination: 'GeoJSON-data/Overfladevandskloakeret.geojson',  visible: true,  hidden: true,  group_container: grp_kloakering }, projection);
-    addSingleColorLayer(map, { ...styles.sewage_ingen,            folder_destination: 'GeoJSON-data/Ingen_kloakering.geojson',         visible: true,                 group_container: grp_kloakering }, projection);
-    addSingleColorLayer(map, { ...styles.sewage_separat_vedtaget, folder_destination: 'GeoJSON-data/Vedtaget_Seperatkloakering.geojson',visible: true, hidden: true,  group_container: grp_kloakering }, projection);
+    addSingleColorLayer(map, { ...styles.sewage_spildevand_road,       folder_destination: 'GeoJSON-data/kun_vejvands-_og_spildevandskloakeret.geojson',    visible: true, group_container: grp_kloakering }, projection);
+    addSingleColorLayer(map, { ...styles.sewage_ingen,            folder_destination: 'GeoJSON-data/Ingen_kloakering.geojson',                              visible: true,                 group_container: grp_kloakering }, projection);
 
 
     // ----------------------------------------------------------------
