@@ -66,6 +66,7 @@ export function addAllLayers(map, projection, fns) {
     const grp_borgerhenvendelser = createGroup({ title: 'Indledende udpegning af undersøgelsesområder, samt borgerhenvendelser', fold: 'close',});
 
     addCategorizedLayer(map, { ...styles.Borgerhenvendelser, folder_destination: 'GeoJSON-data/Borgerhenvendelser.geojson',visible: false, group_container: grp_borgerhenvendelser }, projection);
+    addSingleColorLayer(map, { ...styles.musikkvarteret,     folder_destination: 'GeoJSON-data/musikkvarteret.geojson',visible: false, group_container: grp_borgerhenvendelser }, projection);
 
 
     // ----------------------------------------------------------------

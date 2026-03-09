@@ -431,6 +431,17 @@ export const styles = {
         { field: "klasse", label: "katagori" },
     ]
     },
+    //herlev specifikke undersøgelsesområder
+    musikkvarteret:{
+        title: 'Musikkvarteret',
+        field: "bemærkning",
+        fill_color: '#f1bd7e00', fill_alpha: 1, stroke_color: 'rgb(255, 0, 0)', stroke_width: 2,
+        z_index: 1,
+        attributeTitleField: "attributter",
+            attributes: [
+        { field: "bemærkning", label: "Borgerhenvendelser i området" },
+    ]
+    },
 
     // København
     Matrikler_med_draen: {
