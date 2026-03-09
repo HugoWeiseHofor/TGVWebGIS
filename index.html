@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Terrænnært Grundvand</title>
+
+    <!-- 1. IMPORT INTER FONT FROM GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="Billeder/HOFOR_Logo_Positiv.svg">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, #fff7fa, #c9daa9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background: #e5e4dc;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            width: 400px;
+        }
+
+        img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn {
+            background-color: #0f464b;
+            color: white;
+            padding: 12px;
+            border-radius: 1px;
+            font-size: 14px;
+            transition: 0.2s ease;
+            display: block;
+        }
+
+        .btn:hover {
+            background-color: #58826c;
+            transform: translateY(-2px);
+        }
+
+        .title {
+            color: #0f464b;
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="Billeder/HOFOR_Logo_Positiv.svg" alt="Logo">
+
+        <!-- Title -->
+        <h1 class="title">Terrænnært Grundvand</h1>
+        <p><i class="title"> Vælg kommune </i></p>
+
+        <!-- Buttons -->
+        <div class="button-grid">
+            <a href="albertslund/index.html"><div class="btn">Albertslund</div></a>
+            <a href="dragoer/index.html"><div class="btn">Dragør</div></a>
+            <a href="broendby/index.html"><div class="btn">Brøndby</div></a>
+            <a href="koebenhavn/index.html"><div class="btn">København</div></a>
+            <a href="roedovre/index.html"><div class="btn">Rødovre</div></a>
+            <a href="hvidovre/index.html"><div class="btn">Hvidovre</div></a>
+            <a href="herlev/index.html"><div class="btn">Herlev</div></a>
+            <a href="vallensbaek/index.html"><div class="btn">Vallensbæk</div></a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+// ==========================
+// Shared Layer Style Presets
+// ==========================
+// Presets define everything EXCEPT the three things that vary per map:
+//
+//   folder_destination — GeoJSON path differs per map
+//   visible            — each map sets its own default
+//   group_container    — live DOM reference, created at runtime
+//   hidden             — (optional) per-map UI decision
+//
+// Usage in layers.js:
+//   addSingleColorLayer(map, {
+//       ...styles.lakes,
+//       folder_destination: 'GeoJSON-data/Soeer.geojson',
+//       visible: false,
+//       group_container: grp_soer
+//   }, projection);
+
+export const styles = {
+
+    // ================================================================
+    // Kloakering
+    // ================================================================
+    sewage_spildevand: {
+        title: 'Spildevands kloakeret',
+        fill_color: '#375b9d', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+    sewage_regnvand: {
+        title: 'Regnvands kloakeret',
+        fill_color: '#2bbcd5', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+    sewage_overflade: {
+        title: 'Overfladevands kloakeret',
+        fill_color: '#2bbcd5', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+    sewage_ingen: {
+        title: 'Ingen kloakering',
+        fill_color: '#78a08c', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+    sewage_separat_vedtaget: {
+        title: 'Vedtaget separatkloakering',
+        fill_color: '#e49f83', stroke_color: '#e49f83', stroke_width: 1,
+        fill_alpha: 0.85, z_index: 2
+    },
+
+    // ================================================================
+    // Natur – Fredede & gamle områder
+    // ================================================================
+    protected_areas: {
+        title: 'Fredede Områder',
+        fill_color: 'rgba(165,207,235,0.7)', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+    habitat: {
+        title: 'Habitat områder',
+        fill_color: '#58826c', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+    wetlands_1870: {
+        title: 'Enge & Moser 1870',
+        fill_color: 'rgba(208,231,215,0.7)', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+    wetlands_1700: {
+        title: 'Vådbundsområder omkring 1700-tallet',
+        fill_color: '#c6ef75', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+    line_historic_coast: {
+        title: 'Gammel kystlinje (1870-1899)',
+        field: 'fid', color: '#4e59a0',
+        min_width: 3, max_width: 3, breaks: [1, 1], legend_steps: 1,
+        fill_alpha: 0.85, z_index: 1
+    },
+    line_piped_streams: {
+        title: 'Rørlagte vandløb',
+        field: 'fid', color: '#efb258',
+        min_width: 3, max_width: 3, breaks: [1, 1], legend_steps: 1,
+        fill_alpha: 0.85, z_index: 1
+    },
+
+    // ================================================================
+    // Jordforurening
+    // ================================================================
+    soil_v1: {
+        title: 'Jordforurening vidensniveau 1 (V1)',
+        fill_color: '#b58840', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+    soil_v2: {
+        title: 'Jordforurening vidensniveau 2 (V2)',
+        fill_color: '#f0ceae', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+
+    // ================================================================
+    // Søer
+    // ================================================================
+    lakes:            { title: 'Søer',            fill_color: '#383c6f', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 5 },
+    lakes_buffer_2m:  { title: 'Søer 2m Buffer',  fill_color: '#484c8e', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 4 },
+    lakes_buffer_10m: { title: 'Søer 10m Buffer', fill_color: '#6e73af', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 3 },
+    lakes_buffer_20m: { title: 'Søer 20m Buffer', fill_color: '#c5c6df', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+    lakes_buffer_100m:{ title: 'Søer 100m Buffer',fill_color: '#ebecf4', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+
+    // ================================================================
+    // Vandløb
+    // ================================================================
+    streams:            { title: 'Vandløb',            fill_color: '#6294b7', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 5 },
+    streams_buffer_2m:  { title: 'Vandløb 2m Buffer',  fill_color: '#76b0dc', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 4 },
+    streams_buffer_10m: { title: 'Vandløb 10m Buffer', fill_color: '#a5cfeb', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 3 },
+    streams_buffer_20m: { title: 'Vandløb 20m Buffer', fill_color: '#dbecf6', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+    streams_buffer_100m:{ title: 'Vandløb 100m Buffer',fill_color: '#edf6fb', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+
+    // ================================================================
+    // Bygningsattributter
+    // ================================================================
+    buildings_basement: {
+        title: 'Bygninger med kælder',
+        fill_color: '#d94b54', stroke_color: 'rgb(255,0,0)', stroke_width: 1,
+        fill_alpha: 0.50, max_resolution: 3, z_index: 2
+    },
+    buildings_post1973: {
+        title: 'Bygninger opført efter 1973',
+        fill_color: '#838fe4', stroke_color: 'rgb(13,0,199)', stroke_width: 1,
+        fill_alpha: 0.50, max_resolution: 3, z_index: 2
+    },
+    buildings_use: {
+        title: 'Bygningsanvendelse',
+        field: 'BBR_nogle_rettet_overkatagori',
+        categories: [
+            { value: 'Bygninger til helårsbeboelse',                                       fill_color: '#e4838f', label: 'Bygninger til helårsbeboelse' },
+            { value: 'Bygninger til erhvervsmæssig produktion vedrørende landbrug',        fill_color: '#80cfba', label: 'Bygninger til erhvervsmæssig produktion vedrørende landbrug' },
+            { value: 'Bygninger til erhvervsmæssig produktion',                            fill_color: '#76b0dc', label: 'Bygninger til erhvervsmæssig produktion' },
+            { value: 'Bygninger til erhvervsmæssig energiproduktion og forsyning',         fill_color: '#c6ef75', label: 'Bygninger til erhvervsmæssig energiproduktion og forsyning' },
+            { value: 'Bygninger til transport og parkering',                               fill_color: '#98a4ae', label: 'Bygninger til transport og parkering' },
+            { value: 'Bygninger til kontor, handel og lager',                              fill_color: '#00445e', label: 'Bygninger til kontor, handel og lager' },
+            { value: 'Bygninger til hotel, restaurant og service',                         fill_color: '#e49f83', label: 'Bygninger til hotel, restaurant og service' },
+            { value: 'Bygninger til kultur, forlystelse og trosudøvelse',                  fill_color: '#58826c', label: 'Bygninger til kultur, forlystelse og trosudøvelse' },
+            { value: 'Bygninger til undervisning og forskning',                            fill_color: '#b58840', label: 'Bygninger til undervisning og forskning' },
+            { value: 'Bygninger til sygehus og sundhed',                                   fill_color: '#dbecf6', label: 'Bygninger til sygehus og sundhed' },
+            { value: 'Bygninger til institutionsformål',                                   fill_color: '#bbcfc5', label: 'Bygninger til institutionsformål' },
+            { value: 'Bygninger til sports- og idrætsformål',                              fill_color: '#fff199', label: 'Bygninger til sports- og idrætsformål' },
+            { value: 'Bygninger til fritidsformål',                                        fill_color: '#d0e7d7', label: 'Bygninger til fritidsformål' },
+            { value: 'Mindre bygninger til opbevaring og andre aktiviteter',               fill_color: '#bebeb4', label: 'Mindre bygninger til opbevaring og andre aktiviteter' },
+            { value: 'Mindre bygninger til parkering',                                     fill_color: '#bdb4be', label: 'Mindre bygninger til parkering' },
+            { value: 'Faldefærdige og ukendte bygninger',                                  fill_color: '#f5f6f8', label: 'Faldefærdige og ukendte bygninger' },
+        ],
+        default_fill_color: '#999999', stroke_color: '#ffffff', stroke_width: 0,
+        fill_alpha: 0.85, max_resolution: 3, z_index: 6
+    },
+
+    // ================================================================
+    // Skadesomkostninger
+    // ================================================================
+    damage_cost: {
+        title: 'Gns. skadesomkostninger før tiltag [DKK/år]',
+        field: '_Mean_annual_damage_cost',
+        start_color: '#ffffb2', end_color: '#bd0026',
+        stroke_color: 'rgba(0,0,0,0.5)', stroke_width: 0.5,
+        fill_alpha: 0.85, num_classes: 7,
+        breaks: [0, 20000, 40000, 60000, 80000, 100000, 120000, 47624000],
+        max_resolution: 3, z_index: 1,
+        attributeTitleField: 'attributter',
+        attributes: [
+            { field: 'adresse',                 label: 'Adresse' },
+            { field: '_Mean_annual_damage_cost', label: 'Gns. skade (DKK/år)' },
+            { field: 'Kaelder_j/n',             label: 'Har bygningen kælder? 1/0 ja/nej' },
+        ]
+    },
+
+    // ================================================================
+    // Terrænnært grundvand (GEO)
+    // ================================================================
+    groundwater_geo_1m: {
+        title: 'Risiko for terrænnært grundvand 1m.u.t. (GEO)',
+        field: 'DN',
+        categories: [
+            { value: '1', fill_color: '#00ccffad', label: 'Vinter' },
+            { value: '2', fill_color: '#00bb9f96', label: 'Vinter og Sommer' },
+            { value: '3', fill_color: '#eae1399c', label: 'Sommer' },
+        ],
+        default_fill_color: '#999999', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+    groundwater_geo_2m: {
+        title: 'Risiko for terrænnært grundvand 2m.u.t. (GEO)',
+        field: 'DN',
+        categories: [
+            { value: '1', fill_color: '#00ccffad', label: 'Vinter' },
+            { value: '2', fill_color: '#00bb9f96', label: 'Vinter og Sommer' },
+            { value: '3', fill_color: '#eae1399c', label: 'Sommer' },
+        ],
+        default_fill_color: '#999999', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+
+    // ================================================================
+    // HIP – grundvandsdybde sommer
+    // ================================================================
+    groundwater_0_1m_s:  { title: '0-1m',  fill_color: '#526e97', stroke_color: 'rgba(0,0,0,0)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+    groundwater_1_2m_s:  { title: '1-2m',  fill_color: '#78b0d6', stroke_color: 'rgba(0,0,0,0)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+    groundwater_2_3m_s:  { title: '2-3m',  fill_color: '#c7dfee', stroke_color: 'rgba(0,0,0,0)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+    groundwater_3_7m_s:  { title: '3-7m',  fill_color: '#f9fcff', stroke_color: 'rgba(0,0,0,0)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+
+    // ================================================================
+    // HIP – grundvandsdybde vinter
+    // ================================================================
+    groundwater_0_1m_w:  { title: '0-1m',  fill_color: '#526e97', stroke_color: 'rgba(0,0,0,0)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+    groundwater_1_2m_w:  { title: '1-2m',  fill_color: '#78b0d6', stroke_color: 'rgba(0,0,0,0)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+    groundwater_2_3m_w:  { title: '2-3m',  fill_color: '#c7dfee', stroke_color: 'rgba(0,0,0,0)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+    groundwater_3_7m_w:  { title: '3-7m',  fill_color: '#f9fcff', stroke_color: 'rgba(0,0,0,0)', stroke_width: 0, fill_alpha: 0.85, z_index: 2 },
+
+    // ================================================================
+    // Middelvarigheder (HIP)
+    // ================================================================
+    groundwater_duration_1m: {
+        title: 'Middelvarigheder 1 m.u.t.',
+        field: '1m',
+        start_color: '#f7fbff', end_color: '#08306b',
+        stroke_color: 'rgba(0,0,0,0)', stroke_width: 0,
+        fill_alpha: 0.85, gradient: true, legend_steps: 6,
+        breaks: [0, 366], z_index: 1,
+        attributeTitleField: 'attributter',
+        attributes: [{ field: '1m', label: 'varighed (dage)' }]
+    },
+    groundwater_duration_2m: {
+        title: 'Middelvarigheder 2 m.u.t.',
+        field: '2m',
+        start_color: '#f7fbff', end_color: '#08306b',
+        stroke_color: 'rgba(0,0,0,0)', stroke_width: 0,
+        fill_alpha: 0.85, gradient: true, legend_steps: 6,
+        breaks: [0, 366], z_index: 1,
+        attributeTitleField: 'attributter',
+        attributes: [{ field: '2m', label: 'varighed (dage)' }]
+    },
+
+    // ================================================================
+    // Pumpede vandfraktioner
+    // ================================================================
+    pumped_fractions: {
+        title: 'Pumpede vandfraktioner',
+        fields: [
+            { field: 'gw',   color: '#83d585', label: 'Indsivning' },
+            { field: 'ww',   color: '#f9b5b3', label: 'Tørvejr' },
+            { field: 'rain', color: '#163b91', label: 'Regnvand' },
+            { field: 'uz',   color: '#84ccfa', label: 'Dræn' },
+        ],
+        point_color: '#487bb6', point_stroke: '#325780', point_radius: 8,
+        pie_radius: 30, pie_offset: [38, 0], z_index: 6,
+        attributeTitleField: 'attributter',
+        attributes: [
+            { field: 'gw',   label: 'Indsivning' },
+            { field: 'ww',   label: 'Tørvejr' },
+            { field: 'rain', label: 'Regnvand' },
+            { field: 'uz',   label: 'Dræn' },
+        ]
+    },
+
+    // ================================================================
+    // Vandoplande & strømningsveje
+    // ================================================================
+    catchments: {
+        title: 'Vandoplande',
+        field: 'fid',
+        categories: [
+            { value: '1', fill_color: '#00445e', label: '1' },
+            { value: '2', fill_color: '#afa2a5', label: '2' },
+        ],
+        default_fill_color: '#999999', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+    flow_paths: {
+        title: 'Strømningsveje',
+        field: 'flow', color: '#00445e',
+        min_width: 0.5, max_width: 20, breaks: [0, 1000000], legend_steps: 4,
+        fill_alpha: 0.85, z_index: 1, maxResolution: 3
+    },
+
+    // ================================================================
+    // Boringer (GEUS Jupiter)
+    // ================================================================
+    borehole_deviation_summer: {
+        title: 'Pejledata - Afvigelse af HIP sommer',
+        field: 'deviation_sommer',
+        start_color: '#ff0000', end_color: '#31d100',
+        stroke_color: '#ffffff', stroke_width: 1,
+        breaks: [-27, -3, -2, -1, 0],
+        radius: 4, fill_alpha: 0.85, z_index: 1
+    },
+    borehole_deviation_winter: {
+        title: 'Pejledata - Afvigelse af HIP vinter',
+        field: 'deviation_vinter',
+        start_color: '#ff0000', end_color: '#31d100',
+        stroke_color: '#ffffff', stroke_width: 1,
+        breaks: [-27, -3, -2, -1, 0],
+        radius: 4, fill_alpha: 0.85, z_index: 1
+    },
+    borehole_depth: {
+        title: 'Boringer (dybde i m)',
+        field: 'dybde_num',
+        start_color: '#ffffff', end_color: '#58826c',
+        stroke_color: '#ffffff', stroke_width: 1,
+        breaks: [0, 6, 12, 18, 30],
+        radius: 4, fill_alpha: 0.85, z_index: 1
+    },
+
+    // ================================================================
+    // Risiko for sætningsskader (GEO)
+    // ================================================================
+    settlement_risk: {
+        title: 'Risiko for sætningsskader (GEO)',
+        field: 'DN',
+        categories: [
+            { value: '27', fill_color: '#66df1b', fill_alpha: 0.85, label: '0-0,01' },
+            { value: '42', fill_color: '#d8ef2a', fill_alpha: 0.85, label: '0,01-0,02' },
+            { value: '56', fill_color: '#ffff38', fill_alpha: 0.85, label: '0,02-0,05' },
+            { value: '52', fill_color: '#fbb934', fill_alpha: 0.85, label: '0,05-0,1' },
+            { value: '48', fill_color: '#f82230', fill_alpha: 0.85, label: '>0,1' },
+        ],
+        default_fill_color: '#99999900', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+
+    // ================================================================
+    // Risiko for havvandsindsivning
+    // ================================================================
+    seawater_intrusion: {
+        title: 'Risiko for havvandsindsivning',
+        field: 'DN',
+        categories: [
+            { value: '0', fill_color: '#e47983', fill_alpha: 0.85, label: 'Risiko for havvandsindsivning' },
+        ],
+        default_fill_color: '#ffffff00', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+
+    // ================================================================
+    // Risiko for oversvømmelse
+    // ================================================================
+    flood_risk: {
+        title: 'Risiko for oversvømmelse (Kystdirektoratet)',
+        fill_color: '#c43c39', stroke_color: 'rgb(255,255,255)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+
+    // ================================================================
+    // Geomorfologi (GEUS)
+    // ================================================================
+    geo_bundmoræneflade:           { title: 'Bundmoræneflade',          fill_color: '#b26400', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_erosionsdal:               { title: 'Erosionsdal',              fill_color: '#7ecc00', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_dødislandskab:             { title: 'Dødislandskab',            fill_color: '#dab800', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_mose:                      { title: 'Mose',                     fill_color: '#408016', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_soe:                       { title: 'Sø',                       fill_color: '#fcfcfc', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_tunneldal:                 { title: 'Tunneldal',                fill_color: '#97ad7e', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_toerlagt_marint_forland:   { title: 'Tørlagt marint forland',   fill_color: '#beffe8', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_isoverskrevet_randmoraene: { title: 'Isoverskrevet randmoræne', fill_color: '#897044', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_soebund:                   { title: 'Søbund',                   fill_color: '#b3e500', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_marin_flade:               { title: 'Marin flade',              fill_color: '#b1e4fe', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_antropogent:               { title: 'Antropogent landskab',     fill_color: '#cccccc', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    geo_strandvold:                { title: 'Strandvold',     fill_color: '#4cccfe', stroke_color: 'rgb(255,255,255)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+
+    // ================================================================
+    // Projekt- og Planflader
+    // ================================================================
+    project_varme:    { title: 'Projektflade Varme',    fill_color: '#662ccd', stroke_color: 'rgb(127,0,177)',      stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    project_vand:     { title: 'Projektflade Vand',     fill_color: '#66c4cd', stroke_color: 'rgb(0,120,218)',       stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    project_spildevand:{ title: 'Projektflade Spildevand', fill_color: '#397c33', stroke_color: 'rgba(10,61,0,0.43)', stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    plan_vand:        { title: 'Planflade vand',        fill_color: '#00bebe', stroke_color: 'rgb(255,255,255)',    stroke_width: 0, fill_alpha: 0.85, z_index: 1 },
+    plan_spildevand: {
+        title: 'Planflade Spildevand',
+        field: 'STYLE_REGE',
+        categories: [
+            { value: 'Anlægsprojekter', fill_color: '#34cb00', fill_alpha: 0.85, label: 'Anlægsprojekt' },
+            { value: "Masterplan", fill_color: "#006666", fill_alpha: 0.85, label: "Masterplan" },
+        ],
+        default_fill_color: '#999999', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+
+    // ================================================================
+    // Omrids
+    // ================================================================
+    municipality_outline: {
+        title: 'Omrids',
+        fill_color: 'rgba(255,255,255,0.6)', stroke_color: 'rgba(0,0,0,1)', stroke_width: 2,
+        z_index: 2
+    },
+
+
+    // ================================================================
+    // Kommunespecifik styles
+    // ================================================================
+
+    // Herlev
+    Borgerhenvendelser: {
+        title: 'Borgerhenvendelser, klik på overflade for yderligere info',
+        field: "Adresse",
+        categories: [
+            { value: "Elverparken", stroke_color: "#a0dc5c", fill_color: "#00000000", label: "Elverparken" },
+            { value: "Tornerosevej 17-63", stroke_color: "#f1ba23", fill_color: "#00000000", label: "Tornerosevej 17-63" },
+            { value: "Tornerosevej 75-111", stroke_color: "#f1ba23", fill_color: "#00000000", label: "Tornerosevej 75-111" },
+        ],
+        default_fill_color: "#999999", point_radius: 5, stroke_color: "#ffffff", stroke_width: 3,
+        z_index: 2,
+        attributeTitleField: "attributter",
+            attributes: [
+        { field: "adresse", label: "Adresse" },
+        { field: "bemærkning", label: "bemærkning" },
+        { field: "klasse", label: "katagori" },
+    ]
+    },
+};
