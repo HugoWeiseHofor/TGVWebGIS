@@ -138,7 +138,7 @@ export function addAllLayers(map, projection, fns) {
     // Omrids (hidden background outline)
     // ----------------------------------------------------------------
     const grp_baggrund = createGroup({ title: '', fold: 'close', hidden: true });
-    addSingleColorLayer(map, { ...styles.municipality_outline, folder_destination: 'GeoJSON-data/hvidovre.geojson', hidden: true, group_container: grp_baggrund }, projection);
+    addSingleColorLayer(map, { ...styles.municipality_outline, folder_destination: 'GeoJSON-data/Hvidovre.geojson', hidden: true, group_container: grp_baggrund }, projection);
 
 
     // ----------------------------------------------------------------
