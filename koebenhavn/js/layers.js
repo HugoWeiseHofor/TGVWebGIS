@@ -28,8 +28,6 @@ export function addAllLayers(map, projection, fns) {
     const grp_kloakering = createGroup({ title: 'Kloakering', fold: 'close', depth: 1, container: grp_IKKEkort });
 
     addSingleColorLayer(map, { ...styles.sewage_spildevand,       folder_destination: 'GeoJSON-data/Spildevandskloakeret.geojson',    visible: true,                  group_container: grp_kloakering }, projection);
-    addSingleColorLayer(map, { ...styles.sewage_regnvand,         folder_destination: 'GeoJSON-data/Regnvandskloakeret.geojson',       visible: true,  hidden: true,  group_container: grp_kloakering }, projection);
-    addSingleColorLayer(map, { ...styles.sewage_overflade,        folder_destination: 'GeoJSON-data/Overfladevandskloakeret.geojson',  visible: true,  hidden: true,  group_container: grp_kloakering }, projection);
     addSingleColorLayer(map, { ...styles.sewage_ingen,            folder_destination: 'GeoJSON-data/Ingen_kloakering.geojson',         visible: true,                 group_container: grp_kloakering }, projection);
     addSingleColorLayer(map, { ...styles.sewage_separat_vedtaget, folder_destination: 'GeoJSON-data/Vedtaget_Seperatkloakering.geojson',visible: true,                group_container: grp_kloakering }, projection);
 
@@ -65,12 +63,6 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map, { ...styles.streams_buffer_20m, folder_destination: 'GeoJSON-data/Vandloeb_20m_buffer.geojson', visible: false, group_container: grp_vandloeb }, projection);
     addSingleColorLayer(map, { ...styles.streams_buffer_100m,folder_destination: 'GeoJSON-data/Vandloeb_100m_buffer.geojson',visible: false, group_container: grp_vandloeb }, projection);
 
-
-    // ----------------------------------------------------------------
-    // Hidden groups (no layers yet)
-    // ----------------------------------------------------------------
-    createGroup({ title: 'Indledende udpegning af undersøgelsesområder', fold: 'close', hidden: true });
-    createGroup({ title: 'Borgerhenvendelser', fold: 'close', hidden: true });
 
 
     // ----------------------------------------------------------------
@@ -117,8 +109,8 @@ export function addAllLayers(map, projection, fns) {
     addGraduatedLineLayer(map, { ...styles.flow_paths,  folder_destination: 'GeoJSON-data/Stroemningsveje.geojson', visible: false, hidden: true, group_container: grp_vandoplande }, projection);
 
     const grp_boringer = createGroup({ title: 'Boringer (GEUS Jupiter Database)', fold: 'close', depth: 1, container: grp_analyserdata });
-    addClassedPointLayer(map, { ...styles.borehole_deviation_summer, folder_destination: 'GeoJSON-data/Pejledata_-_Afvigelse_af_HIP_sommer.geojson', visible: false, group_container: grp_boringer }, projection);
-    addClassedPointLayer(map, { ...styles.borehole_deviation_winter, folder_destination: 'GeoJSON-data/Pejledata_-_Afvigelse_af_HIP_vinter.geojson', visible: false, group_container: grp_boringer }, projection);
+    addClassedPointLayer(map, { ...styles.borehole_deviation_summer, folder_destination: 'GeoJSON-data/deviations_kote_fix.geojson', visible: false, group_container: grp_boringer }, projection);
+    addClassedPointLayer(map, { ...styles.borehole_deviation_vinter, folder_destination: 'GeoJSON-data/deviations_kote_fix.geojson', visible: false, group_container: grp_boringer }, projection);
     addClassedPointLayer(map, { ...styles.borehole_depth,            folder_destination: 'GeoJSON-data/Boringer_(dybde_i_m).geojson',                 visible: false, group_container: grp_boringer }, projection);
 
     const grp_risikosskaderGEO = createGroup({ title: 'Risiko for sætningsskader (GEO)', fold: 'close', depth: 1, container: grp_analyserdata });

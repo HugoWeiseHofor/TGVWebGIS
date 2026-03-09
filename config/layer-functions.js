@@ -493,36 +493,62 @@ if (config.attributeTitleField) layer.set('attributeTitleField', config.attribut
 
 // ==========================
 // addClassedPointLayer - Classed circles by breaks
+// Supports explicit class_colors OR interpolated start/end colors
 // ==========================
 export function addClassedPointLayer(map, config, projection) {
+    // ─── Validation & Setup ──────────────────────────────────────
     const breaks = config.breaks || [];
-    if (breaks.length < 2) {
-        console.error('[addClassedPointLayer] breaks array must have at least 2 values');
+    if (!Array.isArray(breaks) || breaks.length < 2) {
+        console.error('[addClassedPointLayer] breaks array must have at least 2 numeric values');
+        return null;
+    }
+    if (!config.field) {
+        console.error('[addClassedPointLayer] config.field is required');
         return null;
     }
 
-    // Store attribute config for popup (add before map.addLayer(layer))
-if (config.attributes) layer.set('attributes', config.attributes);
-if (config.attributeTitleField) layer.set('attributeTitleField', config.attributeTitleField);
-    
     const numClasses = breaks.length - 1;
-    const radius = config.radius || 6;
+    const radius = config.radius ?? 6;
     const strokeColor = resolveColor(config.stroke_color || '#000000');
-    const strokeWidth = config.stroke_width !== undefined ? config.stroke_width : 1;
-    const alpha = config.fill_alpha !== undefined ? config.fill_alpha : 0.85;
-    
-    const startRGB = hexToRgb(config.start_color);
-    const endRGB = hexToRgb(config.end_color);
-    const classColors = Array.from({ length: numClasses }, (_, i) => {
-        const factor = numClasses === 1 ? 0 : i / (numClasses - 1);
-        return rgbToString(interpolateColor(startRGB, endRGB, factor), alpha);
-    });
-    
+    const strokeWidth = config.stroke_width ?? 1;
+    const defaultAlpha = config.fill_alpha ?? 0.85;
+
+    // ─── Color Resolution: explicit class colors OR interpolated gradient ───
+    let classColors = [];
+
+    if (Array.isArray(config.class_colors) && config.class_colors.length === numClasses) {
+        // ✅ Use explicit colors per class
+        classColors = config.class_colors.map(c => {
+            // Allow rgba()/rgb() strings to pass through, otherwise apply alpha
+            if (typeof c === 'string' && (c.startsWith('rgba(') || c.startsWith('rgb('))) {
+                return c;
+            }
+            const rgb = hexToRgb(c);
+            return rgbToString(rgb, defaultAlpha);
+        });
+    } else {
+        // 🎨 Fallback: interpolate between start/end colors
+        const startRGB = hexToRgb(config.start_color || '#ffffb2');
+        const endRGB = hexToRgb(config.end_color || '#b10026');
+        
+        classColors = Array.from({ length: numClasses }, (_, i) => {
+            // Single class → midpoint; multiple → even distribution
+            const factor = numClasses === 1 ? 0.5 : i / (numClasses - 1);
+            return rgbToString(interpolateColor(startRGB, endRGB, factor), defaultAlpha);
+        });
+    }
+
+    // ─── URL Encoding for GeoJSON source ─────────────────────────
     const encodedUrl = config.folder_destination
-        .split('/')
+        ?.split('/')
         .map((seg, i) => i === 0 ? seg : encodeURIComponent(seg))
         .join('/');
-    
+
+    if (!encodedUrl) {
+        console.error('[addClassedPointLayer] config.folder_destination is required');
+        return null;
+    }
+
     const source = new ol.source.Vector({
         url: encodedUrl,
         format: new ol.format.GeoJSON({
@@ -530,59 +556,116 @@ if (config.attributeTitleField) layer.set('attributeTitleField', config.attribut
             featureProjection: projection
         })
     });
-    
+
     source.on('error', e =>
         console.error(`[addClassedPointLayer] Failed to load "${config.folder_destination}":`, e)
     );
-    
+
+    // ─── Classification Logic ────────────────────────────────────
     function getClassIndex(value) {
-        for (let i = 0; i < breaks.length - 1; i++) {
-            if (value <= breaks[i + 1]) return i;
+        if (typeof value !== 'number' || isNaN(value)) return null;
+        
+        // Optional: clamp values to breaks range if configured
+        if (config.clamp_to_breaks) {
+            if (value <= breaks[0]) return 0;
+            if (value >= breaks[breaks.length - 1]) return numClasses - 1;
+        } else {
+            // Out-of-range values return null → feature not rendered
+            if (value < breaks[0] || value > breaks[breaks.length - 1]) return null;
         }
-        return numClasses - 1;
+
+        // Standard [lower, upper) intervals, last class inclusive on both ends
+        for (let i = 0; i < numClasses; i++) {
+            const lower = breaks[i];
+            const upper = breaks[i + 1];
+            if (i === numClasses - 1) {
+                // Last class: inclusive upper bound
+                if (value >= lower && value <= upper) return i;
+            } else {
+                // Other classes: inclusive lower, exclusive upper
+                if (value >= lower && value < upper) return i;
+            }
+        }
+        return numClasses - 1; // Fallback
     }
-    
+
+    // ─── Style Function ──────────────────────────────────────────
     const styleFunction = function(feature) {
         let value = feature.get(config.field);
-        if (typeof value === 'string') value = parseFloat(value.replace(',', '.'));
+        
+        // Parse string numbers (Danish format: comma as decimal separator)
+        if (typeof value === 'string') {
+            value = parseFloat(value.trim().replace(',', '.'));
+        }
+        
         if (value == null || isNaN(value)) return null;
         
         const classIdx = getClassIndex(value);
+        if (classIdx === null) return null; // Skip unclassifiable features
+        
         const color = classColors[classIdx];
         
         return new ol.style.Style({
             image: new ol.style.Circle({
                 radius: radius,
                 fill: new ol.style.Fill({ color: color }),
-                stroke: new ol.style.Stroke({ color: strokeColor, width: strokeWidth })
+                stroke: new ol.style.Stroke({ 
+                    color: strokeColor, 
+                    width: strokeWidth 
+                })
             })
         });
     };
-    
+
+    // ─── Legend Generation ───────────────────────────────────────
+    function formatBreak(val) {
+        if (!Number.isFinite(val)) return '';
+        // Round to configured precision (default: 0 decimals)
+        const precision = config.legend_decimal_places ?? 0;
+        const rounded = precision === 0 
+            ? Math.round(val) 
+            : Math.round(val * Math.pow(10, precision)) / Math.pow(10, precision);
+        
+        return Number.isInteger(rounded)
+            ? rounded.toLocaleString('da-DK')
+            : rounded.toFixed(precision).replace('.', ',');
+    }
+
     const legendItems = classColors.map((color, i) => ({
         color: color,
         strokeColor: strokeColor,
-        label: `${Math.round(breaks[i]).toLocaleString('da-DK')} – ${Math.round(breaks[i + 1]).toLocaleString('da-DK')}`,
+        label: `${formatBreak(breaks[i])} – ${formatBreak(breaks[i + 1])}`,
         point: true,
         pointRadius: radius
     }));
-    
+
+    // ─── Layer Creation ──────────────────────────────────────────
     const layerOptions = {
         source,
         style: styleFunction,
         zIndex: config.z_index,
-        visible: config.visible !== undefined ? config.visible : true,
-        ...(config.max_resolution !== undefined && { maxResolution: config.max_resolution })
+        visible: config.visible ?? true,
+        ...(config.max_resolution !== undefined && { maxResolution: config.max_resolution }),
+        ...(config.min_resolution !== undefined && { minResolution: config.min_resolution })
     };
-    
+
     const layer = new ol.layer.Vector(layerOptions);
-    map.addLayer(layer);
     
-    // Store attribute config for popup
+    // Store attribute config for popup (AFTER layer creation ✅)
     if (config.attributes) layer.set('attributes', config.attributes);
     if (config.attributeTitleField) layer.set('attributeTitleField', config.attributeTitleField);
     
-    registerLayer(layer, config.title || 'Classed Point Layer', 'overlay', legendItems, config.group_container || null, config.hidden || false);
+    map.addLayer(layer);
+    
+    // Register with legend/layer control system
+    registerLayer(
+        layer, 
+        config.title || 'Classed Point Layer', 
+        'overlay', 
+        legendItems, 
+        config.group_container || null, 
+        config.hidden || false
+    );
     
     return { layer, source };
 }

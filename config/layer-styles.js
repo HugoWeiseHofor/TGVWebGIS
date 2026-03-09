@@ -289,21 +289,33 @@ export const styles = {
     // ================================================================
     // Boringer (GEUS Jupiter)
     // ================================================================
+
+
     borehole_deviation_summer: {
         title: 'Pejledata - Afvigelse af HIP sommer',
-        field: 'deviation_sommer',
-        start_color: '#ff0000', end_color: '#31d100',
+        field: 'deviation_kote_sommer',
         stroke_color: '#ffffff', stroke_width: 1,
-        breaks: [-27, -3, -2, -1, 0],
-        radius: 4, fill_alpha: 0.85, z_index: 1
+        breaks: [-27, 0, 1, 2, 3, 27], 
+        class_colors:  ['#962e7c','#e71c0e', '#fd8d3c', '#ffffb2', '#15ff00',],
+        legend_decimal_places: 0,
+        radius: 4, fill_alpha: 0.85, z_index: 1,
+        attributeTitleField: 'attributter',
+        attributes: [
+            { field: 'deviation_kote_sommer',   label: 'Forskel (m)' },
+        ]
     },
-    borehole_deviation_winter: {
+    borehole_deviation_vinter: {
         title: 'Pejledata - Afvigelse af HIP vinter',
-        field: 'deviation_vinter',
-        start_color: '#ff0000', end_color: '#31d100',
+        field: 'deviation_kote_vinter',
         stroke_color: '#ffffff', stroke_width: 1,
-        breaks: [-27, -3, -2, -1, 0],
-        radius: 4, fill_alpha: 0.85, z_index: 1
+        breaks: [-27, 0, 1, 2, 3, 27], 
+        class_colors:  ['#962e7c','#e71c0e', '#fd8d3c', '#ffffb2', '#15ff00',],
+        legend_decimal_places: 0,
+        radius: 4, fill_alpha: 0.85, z_index: 1,
+        attributeTitleField: 'attributter',
+        attributes: [
+            { field: 'deviation_kote_vinter',   label: 'Forskel (m)' },
+        ]
     },
     borehole_depth: {
         title: 'Boringer (dybde i m)',

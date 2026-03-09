@@ -106,8 +106,8 @@ export function addAllLayers(map, projection, fns) {
     addGraduatedLineLayer(map, { ...styles.flow_paths,  folder_destination: 'GeoJSON-data/Stroemningsveje.geojson', visible: false, hidden: true, group_container: grp_vandoplande }, projection);
 
     const grp_boringer = createGroup({ title: 'Boringer (GEUS Jupiter Database)', fold: 'close', depth: 1, container: grp_analyserdata });
-    addClassedPointLayer(map, { ...styles.borehole_deviation_summer, folder_destination: 'GeoJSON-data/Pejledata_-_Afvigelse_af_HIP_sommer.geojson', visible: false, group_container: grp_boringer }, projection);
-    addClassedPointLayer(map, { ...styles.borehole_deviation_winter, folder_destination: 'GeoJSON-data/Pejledata_-_Afvigelse_af_HIP_vinter.geojson', visible: false, group_container: grp_boringer }, projection);
+    addClassedPointLayer(map, { ...styles.borehole_deviation_summer, folder_destination: 'GeoJSON-data/deviations_kote_fix_hvidovre.geojson', visible: false, group_container: grp_boringer }, projection);
+    addClassedPointLayer(map, { ...styles.borehole_deviation_vinter, folder_destination: 'GeoJSON-data/deviations_kote_fix_hvidovre.geojson', visible: false, group_container: grp_boringer }, projection);
     addClassedPointLayer(map, { ...styles.borehole_depth,            folder_destination: 'GeoJSON-data/Boringer_(dybde_i_m).geojson',                 visible: false, group_container: grp_boringer }, projection);
 
     const grp_risikosskaderGEO = createGroup({ title: 'Risiko for sætningsskader (GEO)', fold: 'close', depth: 1, container: grp_analyserdata });
