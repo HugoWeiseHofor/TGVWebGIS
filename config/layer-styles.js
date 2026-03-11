@@ -268,7 +268,12 @@ export const styles = {
         fill_alpha: 0.85, gradient: true, legend_steps: 6,
         breaks: [0, 366], z_index: 1,
         attributeTitleField: 'attributter',
-        attributes: [{ field: '1m', label: 'varighed (dage)' }]
+        attributes: [{ field: '1m', label: 'varighed (dage)' }],
+        info_box: {
+            title: 'Middelvarigheder 1 m.u.t.',          
+            text:  'Click på celle for værdi', 
+            border_color: '#c43c39'     
+}
     },
     groundwater_duration_2m: {
         title: 'Middelvarigheder 2 m.u.t.',
@@ -278,7 +283,12 @@ export const styles = {
         fill_alpha: 0.85, gradient: true, legend_steps: 6,
         breaks: [0, 366], z_index: 1,
         attributeTitleField: 'attributter',
-        attributes: [{ field: '2m', label: 'varighed (dage)' }]
+        attributes: [{ field: '2m', label: 'varighed (dage)' }],
+        info_box: {
+            title: 'Middelvarigheder 2 m.u.t.',          
+            text:  'Click på celle for værdi', 
+            border_color: '#c43c39'     
+}
     },
 
     // ================================================================
