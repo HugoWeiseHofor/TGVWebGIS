@@ -43,7 +43,12 @@ const map = new ol.Map({
     view: view
 });
 
-view.fit(extent, { padding: [300, 300, 300, 600], minZoom: 13 });
+map.once('postrender', function () {
+    view.fit(extent, {
+        padding: [300, 300, 300, 600],
+        minZoom: 13
+    });
+});
 
 // Initialize Layer Switcher
 initLayerSwitcher();
