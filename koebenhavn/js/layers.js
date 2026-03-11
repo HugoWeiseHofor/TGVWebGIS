@@ -141,6 +141,9 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map, { ...styles.geo_marin_flade,              folder_destination: 'GeoJSON-data/Marin_flade.geojson',               visible: false,               group_container: grp_geomorfologi }, projection);
     addSingleColorLayer(map, { ...styles.geo_antropogent,              folder_destination: 'GeoJSON-data/Antropogent_landskab.geojson',      visible: false,               group_container: grp_geomorfologi }, projection);
 
+    const grp_kk_foreloebigegislag = createGroup({ title: 'KK foreløbige gis-lag', fold: 'close', depth: 1, container: grp_analyserdata });
+    addClassedPointLayer(map, { ...styles.dybde_til_vandspejlet_i_kalken, folder_destination: 'GeoJSON-data/Dybde_til_vandspejlet_i_kalken_(gradient).geojson', visible: false, group_container: grp_kk_foreloebigegislag }, projection);
+    addClassedPointLayer(map, { ...styles.ME_Residualer_for_HIP10m, folder_destination: 'GeoJSON-data/ME_Residualer_for_HIP10m.geojson', visible: false, group_container: grp_kk_foreloebigegislag }, projection);
 
     // ----------------------------------------------------------------
     // Projekt- og Planflader

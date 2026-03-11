@@ -577,6 +577,35 @@ export const styles = {
 }
     },
 
+    dybde_til_vandspejlet_i_kalken: {
+        title: 'dybde til vandspejlet i kalken (gradient)',
+        field: 'Gradient_m',
+        stroke_color: '#ffffff', stroke_width: 1,
+        breaks: [-3, 0, 1, 2, 3, 9], 
+        class_colors:  ['#d7191c','#fdae61', '#ffffbf', '#abdda4', '#2b83ba',],
+        legend_decimal_places: 0,
+        radius: 4, fill_alpha: 0.85, z_index: 1,
+        attributeTitleField: 'attributter',
+        attributes: [
+            { field: 'Gradient_m',   label: 'Gradient (m)' },
+        ]
+    },
+    ME_Residualer_for_HIP10m: {
+        title: 'ME Residualer for HIP10m',
+        field: 'ME',
+        stroke_color: '#ffffff', stroke_width: 1,
+        breaks: [-5, -2, -1, -0.5, 0.5, 1, 2, 7], 
+        class_colors:  ['#2b83ba','#80bfab', '#c7e8ad', '#ffffbf', '#fec980', '#f07c4a','#d7191c',],
+        legend_decimal_places: 0,
+        radius: 4, fill_alpha: 0.85, z_index: 1,
+        attributeTitleField: 'attributter',
+        attributes: [
+            { field: 'ME',   label: '(m)' },
+        ]
+    },
+
+
+
 // albertslund
     borgerhenvendelse_albertslund: {
         title: 'Borgerhenvendelse',
