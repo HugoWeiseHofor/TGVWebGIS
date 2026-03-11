@@ -59,6 +59,13 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map, { ...styles.streams_buffer_100m,folder_destination: 'GeoJSON-data/Vandloeb_100m_buffer.geojson',visible: false, group_container: grp_vandloeb }, projection);
 
     // ----------------------------------------------------------------
+    // Borgerhenvendelse
+    // ----------------------------------------------------------------
+    const grp_borgerhenvendelser = createGroup({ title: 'Borgerhenvendelser', fold: 'close' });
+    addSingleColorLayer(map, { ...styles.borgerhenvendelse_albertslund,folder_destination: 'GeoJSON-data/borgerhenvendelse.geojson',visible: true, group_container: grp_borgerhenvendelser }, projection);
+
+
+    // ----------------------------------------------------------------
     // Analyser og andre data
     // ----------------------------------------------------------------
     const grp_analyserdata = createGroup({ title: 'Analyser og andre data', fold: 'close' });

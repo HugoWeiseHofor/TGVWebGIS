@@ -763,3 +763,33 @@ export function addClassedPointLayer(map, config, projection) {
     setupInfoBox(layer, config);
     return { layer, source };
 }
+
+export function addWMSLayer(map, config) {
+    const source = new ol.source.ImageWMS({
+        url: config.url,
+        params: {
+            'LAYERS': config.layers,
+            ...config.params
+        },
+        serverType: config.server_type || 'mapserver',
+        ratio: 1
+    });
+
+    const layer = new ol.layer.Image({
+        source,
+        opacity: config.opacity !== undefined ? config.opacity : 1,
+        zIndex: config.z_index,
+        visible: config.visible !== undefined ? config.visible : true,
+        ...(config.max_resolution !== undefined && { maxResolution: config.max_resolution }),
+        ...(config.min_resolution !== undefined && { minResolution: config.min_resolution })
+    });
+
+    map.addLayer(layer);
+    setupInfoBox(layer, config);
+
+    const legendItems = config.legend_items || [];
+    registerLayer(layer, config.title || 'WMS Layer', 'overlay', legendItems,
+        config.group_container || null, config.hidden || false);
+
+    return { layer, source };
+}

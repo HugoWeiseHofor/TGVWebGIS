@@ -19,6 +19,7 @@ export function addAllLayers(map, projection, fns) {
         addGraduatedLineLayer,
         addClassedPointLayer,
         createGroup,
+        addWMSLayer,
     } = fns;
 
     // ----------------------------------------------------------------
@@ -129,6 +130,29 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map, { ...styles.geo_mose,                     folder_destination: 'GeoJSON-data/Mose.geojson',                      visible: false,               group_container: grp_geomorfologi }, projection);
     addSingleColorLayer(map, { ...styles.geo_soe,                      folder_destination: 'GeoJSON-data/Soe.geojson',                       visible: false,               group_container: grp_geomorfologi }, projection);
     addSingleColorLayer(map, { ...styles.geo_tunneldal,                folder_destination: 'GeoJSON-data/Tunneldal.geojson',                 visible: false,               group_container: grp_geomorfologi }, projection);
+
+    const grp_potentialekort = createGroup({ title: 'Potentialekort (GEO)', fold: 'close', depth: 1, container: grp_analyserdata });
+    addWMSLayer(map, {
+        title: 'Potentialekort',
+        url: 'https://data.geo.dk/mapv2/geo-hydromodels/wms',
+        layers: 'hydromodelid154-5m,hydromodelid154-1m',
+        server_type: 'mapserver',
+        opacity: 1,
+        z_index: 0,
+        visible: false,
+        group_container: grp_potentialekort,
+        params: {
+            'VERSION': '1.3.0',
+            'TRANSPARENT': 'TRUE',
+            'TOKEN': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6WyJnZW9hdGxhc0Bob2Zvci5kayIsImdlb2F0bGFzQGhvZm9yLmRrIl0sIkdBTC5Jc0F1dGhlbnRpY2F0ZWQiOiIxIiwiR0FMLlVzZXJOYW1lIjoiZ2VvYXRsYXNAaG9mb3IuZGsiLCJHQUwuT3JnYW5pc2F0aW9uIjoiIiwiR0FMLkVtYWlsIjoiZ2VvYXRsYXNAaG9mb3IuZGsiLCJHQUwuR2VvRnVuY3Rpb25zIjoiKiIsIkdBTC5HZW9EYXRhU291cmNlcyI6IjEsMTAsMTEsMTMsMTQsMTUsMTcsMTgsMiwyMSwyMywyNCwyNSw0LDUsOSIsIkdBTC5HZW9NYXBzIjoiQmFnZ3J1bmRza29ydCxib3JlaG9sZSxFbnZTYW1wbGVzLEdlb0xheWVyLEdlb3BoeXNpY3MsR1ZMTG9nZ2VycyxIZWRlbGFuZCxoaW5kcmluZ2VyLEhpc3Rvcmlza2VLb3J0LEhvdW1hcmssSW5zYXIsSW5zYXIgTm90UmVsZWFzZWQsS0JILG5lZHNpdm5pbmcsUG9zdFNlbmdsYWNpYWwscHJhZWt2YXJ0YWVyLFByb2plY3RzLHNsaWNlREhNLHNsaWNlS290ZSxUTkdWU21hcCxWYW5kIiwiR0FMLkdlb01vZGVscyI6IjEwMDEsMTAwMiwxMDAzLDEwMDQsMTAwNSwxMDA2LDEwMDgsMTAwOSwxMDEwLDEwMTEsMTAxMiwxMDEzLDEwMTQsMTAxNSwxMDE2LDEwMTcsMTAxOCwxMDE5LDEwMjAsMTAyMiwxMDIzLDEwMjQsMTAyNSwxMDI2LDEwMjcsMTAyOCwxMDI5LDEwMzAsMTAzMSwxMDMyLDEwMzMsMTAzNCwxMDM1LDEwMzYsMTAzOCwxMDM5LDEwNDAsMTA0MSwxMDQyLDEwNDMsMTA0NCwxMDQ1LDEwNDYsMTA0NywxMDQ4LDEwNDksMTA1MCwxMDUxLDEwNTIsMTA1MywxMDU0LDEwNTUsMTA1NiwxMDU3LDEwNTgsMTA1OSwxMDYwLDEwNjEsMTA2MiwxMDYzLDEwNjQsMTA2NSwxMDY2LDEwNjcsMTA2OCwxMDY5LDEwNzAsMTA3MSwxMDcyLDEwNzMsMTA3NCwxMDc1LDEwNzYsMTA3NywxMDc4LDEwNzksMTA4MCwxMDgxLDEwODIsMTA4MywxMDg0LDEwODUsMTA4NiwxMDg3LDEwODgsMTA4OSwxMDkwLDEwOTEsMTA5MiwxMDkzLDEwOTQsMTA5NSwxMDk2LDEwOTcsMTA5OCwxMTAyLDExMDcsMTEwOCwxMTEzLDExMTcsMTEzMywxMTM2LDExMzcsMTE0MCwxMTQ0LDExNTAsMTE1MiwxMTUzLDExNjEsMTE2MiwxMTY1LDExNjYsMTE2OCwxMTY5LDExNzAsMTE3NiwxMTc4LDExODEsMTE4OCwxMTkwLDYwMCIsIkdBTC5IeWRyb01vZGVscyI6IioiLCJHQUwuR2VvVGVtcGxhdGVzIjoiMyIsIkdBTC5HVkxMb2dnZXJzIjoiMjksMzQsNiw2MSw2NiIsIkdBTC5HZW9BcmVhIjoiMSIsIkdBTC5CYXRoeW1ldHJ5IjoiMSw1OSIsIkdBTC5Cb3JlaG9sZUxpbmsiOiIxMCw5IiwiR0FMLlByb2ZpbGVMYXllcnMiOiIiLCJHQUwuUHJvamVjdCI6IjgyMDk0PTIiLCJHQUwuUHJvamVjdENvZGUiOiI5MDAwPTIsOTAwMT0yLDkwMDI9Miw5MDAzPTIsMTAwMDA9MiwxMDAwMT0yLDEwMDAyPTIsMTAwMDM9MiIsIkdBTC5Qcm9qZWN0QWRtaW4iOiIxMCw5IiwiR0FMLkdlb01hcExheWVyVHlwZXMiOiIxLDIsMyw0LDUsNiw3LDgsOSwxMCwxMSwxOSwyMCwyMSwyMywyNCwyNSwyNywyOSwzMCwzMSIsIkdBTC5FbnZTYW1wbGVTb3VyY2VzIjoiNCIsIkdBTC5HZW9UZWNobmljYWxEYXRhIjoiMTA9MSw5PTEiLCJyb2xlIjoiSE9GT1IiLCJlbWFpbCI6Imdlb2F0bGFzQGhvZm9yLmRrIiwibmJmIjoxNzczMjI4OTg3LCJleHAiOjE3NzMzMDA5ODcsImlhdCI6MTc3MzIyODk4N30.gJ5pWY5jJkSGmZBaKP1zAcGG8VYcsT-ebX78PBY7uIg',  
+            'CRS': 'EPSG:25832',
+            'STYLES': '',
+            'FORMAT': 'image/png',
+        },
+        legend_items: [
+            { color: '#2600ff', label: 'Potentialekort' }
+        ]
+    });
 
 
     // ----------------------------------------------------------------

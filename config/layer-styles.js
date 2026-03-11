@@ -576,4 +576,17 @@ export const styles = {
             border_color: '#c43c39'     
 }
     },
+
+// albertslund
+    borgerhenvendelse_albertslund: {
+        title: 'Borgerhenvendelse',
+        fill_color: '#ff873c', fill_alpha: 0.85, stroke_color: 'rgb(255, 255, 255)', stroke_width: 0,
+        z_index: 2,
+        info_box: {
+            title: 'Borgerhenvendelse',          
+            text:  'Borgerhenvendelse angående tgv indenfor cirklen', 
+            border_color: '#c43c39'     
+}
+    },
+
 };

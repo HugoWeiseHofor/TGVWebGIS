@@ -9,7 +9,8 @@ import {
     addCategorizedLayer,
     addPieChartLayer,
     addGraduatedLineLayer,
-    addClassedPointLayer
+    addClassedPointLayer,
+    addWMSLayer
 } from '../../config/layer-functions.js';
 import { initPopup, showPopup, hidePopup } from '../../config/popup.js';
 
@@ -124,7 +125,8 @@ import('./layers.js').then(module => {
         addGraduatedLineLayer,
         addClassedPointLayer,
         createGroup,
-        registerLayer
+        registerLayer,
+        addWMSLayer
     });
 });
 
