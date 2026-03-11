@@ -6,6 +6,99 @@ import { hexToRgb, interpolateColor, rgbToString, resolveColor } from '../config
 import { registerLayer } from '../config/layer-switcher.js';
 
 // ==========================
+// setupInfoBox — Layer info panel stacked above #damageSummary
+// ==========================
+//
+// All info boxes and #damageSummary share one flex column: #bottom-left-stack.
+// The stack is created on first use; #damageSummary is moved into it so
+// everything reflows automatically as boxes appear/disappear.
+//
+// config.info_box shape:
+//   {
+//     title:        string,   // bold header (optional)
+//     text:         string,   // body HTML/text (optional)
+//     border_color: string,   // left-border accent colour (default '#2c5f8a')
+//   }
+//
+let _stackReady = false;
+function _ensureStack() {
+    if (_stackReady) return;
+    _stackReady = true;
+
+    const stack = document.createElement('div');
+    stack.id = 'bottom-left-stack';
+    document.body.appendChild(stack);
+
+    // Move #damageSummary into the stack so it flows with the info boxes.
+    // It may not exist yet (per-map code runs after), so we watch for it.
+    function adoptDamageSummary() {
+        const ds = document.getElementById('damageSummary');
+        if (ds && ds.parentElement !== stack) stack.appendChild(ds);
+    }
+    adoptDamageSummary();
+    // Retry once the DOM is fully ready in case layers.js adds it later
+    setTimeout(adoptDamageSummary, 0);
+}
+
+export function setupInfoBox(layer, config) {
+    if (!config.info_box) return;
+    _ensureStack();
+
+    const ib = config.info_box;
+    const box = document.createElement('div');
+    box.className = 'layer-info-box';
+    box.style.borderLeftColor = ib.border_color || '#2c5f8a';
+
+    // ── Build inner HTML ──────────────────────────────────────────
+    let html = '';
+    if (ib.title) html += `<strong class="lib-title">${ib.title}</strong>`;
+    if (ib.text)  html += `<p class="lib-text">${ib.text}</p>`;
+
+    // Optional bullet list
+    if (Array.isArray(ib.list) && ib.list.length > 0) {
+        html += `<ul class="lib-list">${ib.list.map(item => `<li>${item}</li>`).join('')}</ul>`;
+    }
+
+    // Optional legend block
+    // Each entry: { color, label, outline? }
+    // If the array has entries where gradient:true is set on ALL items,
+    // the swatches are rendered flush (no gap) forming a continuous bar.
+    if (Array.isArray(ib.legend) && ib.legend.length > 0) {
+        const isGradient = ib.legend.every(e => e.gradient);
+        html += `<div class="lib-legend${isGradient ? ' lib-legend-gradient' : ''}">`;
+        ib.legend.forEach(entry => {
+            const border = entry.outline
+                ? `border:1px solid ${entry.outline};`
+                : 'border:1px solid rgba(0,0,0,0.15);';
+            html += `
+                <div class="lib-legend-row">
+                    <span class="lib-swatch" style="background:${entry.color};${border}"></span>
+                    <span class="lib-legend-label">${entry.label ?? ''}</span>
+                </div>`;
+        });
+        html += `</div>`;
+    }
+
+    box.innerHTML = html;
+    box.style.display = 'none';
+
+    // Insert before #damageSummary so info boxes always sit above it
+    const stack = document.getElementById('bottom-left-stack');
+    const ds = document.getElementById('damageSummary');
+    if (ds && ds.parentElement === stack) {
+        stack.insertBefore(box, ds);
+    } else {
+        stack.appendChild(box);
+    }
+
+    function sync() {
+        box.style.display = layer.getVisible() ? 'block' : 'none';
+    }
+    layer.on('change:visible', sync);
+    sync();
+}
+
+// ==========================
 // addThematicLayer - Choropleth polygons
 // ==========================
 export function addThematicLayer(map, config, projection) {
@@ -142,7 +235,8 @@ export function addThematicLayer(map, config, projection) {
             if (source.getState() === 'ready') layer.setVisible(false);
         });
     }
-    
+
+    setupInfoBox(layer, config);
     return { layer, source };
 }
 
@@ -186,7 +280,7 @@ export function addSingleColorLayer(map, config, projection) {
     
     const legendItems = [{ color: fillColor, strokeColor: strokeColor, label: '' }];
     registerLayer(layer, config.title || 'Overlay Layer', 'overlay', legendItems, config.group_container || null, config.hidden || false);
-    
+    setupInfoBox(layer, config);
     return { layer, source };
 }
 
@@ -264,7 +358,7 @@ export function addCategorizedLayer(map, config, projection) {
     }));
     
     registerLayer(layer, config.title || 'Categorized Layer', 'overlay', legendItems, config.group_container || null, config.hidden || false);
-    
+    setupInfoBox(layer, config);
     return { layer, source };
 }
 
@@ -374,7 +468,7 @@ export function addPieChartLayer(map, config, projection) {
     }));
     
     registerLayer(layer, config.title || 'Pie Chart Layer', 'overlay', legendItems, config.group_container || null, config.hidden || false);
-    
+    setupInfoBox(layer, config);
     return { layer, source };
 }
 
@@ -487,7 +581,7 @@ if (config.attributeTitleField) layer.set('attributeTitleField', config.attribut
     // Store attribute config for popup
     if (config.attributes) layer.set('attributes', config.attributes);
     if (config.attributeTitleField) layer.set('attributeTitleField', config.attributeTitleField);
-    
+    setupInfoBox(layer, config);
     return { layer, source };
 }
 
@@ -666,6 +760,6 @@ export function addClassedPointLayer(map, config, projection) {
         config.group_container || null, 
         config.hidden || false
     );
-    
+    setupInfoBox(layer, config);
     return { layer, source };
 }

@@ -65,11 +65,11 @@ export function addAllLayers(map, projection, fns) {
     // ----------------------------------------------------------------
     const grp_analyserdata = createGroup({ title: 'Analyser og andre data', fold: 'close' });
 
-    const grp_Bygningsattributter = createGroup({ title: 'Bygningsattributter (zoom, for at aktivere)', fold: 'close', depth: 1,  container: grp_analyserdata });
+    const grp_Bygningsattributter = createGroup({ title: 'Bygningsattributter', fold: 'close', depth: 1,  container: grp_analyserdata });
     addSingleColorLayer(map,  { ...styles.buildings_basement, folder_destination: 'GeoJSON-data/Bygninger_med_kaelder.geojson',         visible: false,                group_container: grp_Bygningsattributter }, projection);
     addSingleColorLayer(map,  { ...styles.buildings_post1973, folder_destination: 'GeoJSON-data/Bygninger_opfoert_efter_1973.geojson',  visible: false,               group_container: grp_Bygningsattributter }, projection);
     addCategorizedLayer(map,  { ...styles.buildings_use,      folder_destination: 'GeoJSON-data/Bygningsanvendelse.geojson',            visible: false,               group_container: grp_Bygningsattributter }, projection);
-
+    addCategorizedLayer(map,  { ...styles.fredede_bygninger,      folder_destination: 'GeoJSON-data/fredede_bygninger.geojson',         visible: false,               group_container: grp_Bygningsattributter }, projection);
     const grp_skadesomkostninger = createGroup({ title: 'Indledende skadesberegninger - Gennemsnitlig skadesomkostninger før tiltag', fold: 'close', depth: 1, container: grp_analyserdata });
     const { layer: lyr_bygninger, source: jsonSource_bygninger } =
         addThematicLayer(map, { ...styles.damage_cost, folder_destination: 'GeoJSON-data/Indledende_skadesberegninger_-_Gennemsnitlig_skadesomkostninger_foer_tiltag.geojson', visible: false, group_container: grp_skadesomkostninger }, projection);

@@ -70,10 +70,11 @@ export function addAllLayers(map, projection, fns) {
     // ----------------------------------------------------------------
     const grp_analyserdata = createGroup({ title: 'Analyser og andre data', fold: 'close' });
 
-    const grp_Bygningsattributter = createGroup({ title: 'Bygningsattributter (zoom, for at aktivere)', fold: 'close', depth: 1, hidden: true, container: grp_analyserdata });
-    addSingleColorLayer(map,  { ...styles.buildings_basement, folder_destination: 'GeoJSON-data/Bygninger_med_kaelder.geojson',        visible: false,  hidden: true, group_container: grp_Bygningsattributter }, projection);
+    const grp_Bygningsattributter = createGroup({ title: 'Bygningsattributter', fold: 'close', depth: 1, container: grp_analyserdata });
+    addSingleColorLayer(map,  { ...styles.buildings_basement, folder_destination: 'GeoJSON-data/Bygninger_med_kaelder.geojson',         visible: false, hidden: true, group_container: grp_Bygningsattributter }, projection);
     addSingleColorLayer(map,  { ...styles.buildings_post1973, folder_destination: 'GeoJSON-data/Bygninger_opfoert_efter_1973.geojson',  visible: false, hidden: true, group_container: grp_Bygningsattributter }, projection);
     addCategorizedLayer(map,  { ...styles.buildings_use,      folder_destination: 'GeoJSON-data/Bygningsanvendelse.geojson',            visible: false, hidden: true, group_container: grp_Bygningsattributter }, projection);
+    addCategorizedLayer(map,  { ...styles.fredede_bygninger,      folder_destination: 'GeoJSON-data/fredede_bygninger.geojson',         visible: false,               group_container: grp_Bygningsattributter }, projection);
 
     const grp_skadesomkostninger = createGroup({ title: 'Indledende skadesberegninger - Gennemsnitlig skadesomkostninger før tiltag', fold: 'close', depth: 1, container: grp_analyserdata });
     const { layer: lyr_bygninger, source: jsonSource_bygninger } =
@@ -116,7 +117,7 @@ export function addAllLayers(map, projection, fns) {
     const grp_risikosskaderGEO = createGroup({ title: 'Risiko for sætningsskader (GEO)', fold: 'close', depth: 1, container: grp_analyserdata });
     addCategorizedLayer(map, { ...styles.settlement_risk, folder_destination: 'GeoJSON-data/Risiko_for_saetningsskader_(GEO).geojson', visible: false, group_container: grp_risikosskaderGEO }, projection);
 
-    const grp_Loakl_draening_og_nedsivning = createGroup({ title: 'Lokal dræning og nedsivning, zoom for at aktivere', fold: 'close', depth: 1, container: grp_analyserdata });
+    const grp_Loakl_draening_og_nedsivning = createGroup({ title: 'Lokal dræning og nedsivning', fold: 'close', depth: 1, container: grp_analyserdata });
     addSingleColorLayer(map, { ...styles.Matrikler_med_draen,            folder_destination: 'GeoJSON-data/matrikler_med_draen.geojson',                visible: false, group_container: grp_Loakl_draening_og_nedsivning }, projection);
     addSingleColorLayer(map, { ...styles.Nedsivningsanlaeg,              folder_destination: 'GeoJSON-data/nedsivningsanlaeg.geojson',                  visible: false, group_container: grp_Loakl_draening_og_nedsivning }, projection);
     addSingleColorLayer(map, { ...styles.Matrikler_med_lokal_nedsivning, folder_destination: 'GeoJSON-data/matrikler_med_lokal_nedsivning.geojson',     visible: false, group_container: grp_Loakl_draening_og_nedsivning }, projection);

@@ -74,7 +74,12 @@ export const styles = {
     wetlands_1700: {
         title: 'Vådbundsområder omkring 1700-tallet',
         fill_color: '#c6ef75', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
-        fill_alpha: 0.85, z_index: 2
+        fill_alpha: 0.85, z_index: 2,
+        info_box: {
+            title: 'Vådbundsområder omkring 1700-tallet',          
+            text:  'Dam, Peder (2026): Vådbundsområder omkring 1700-tallet. Version 2.0. Arven i Landskabet. Museum Odense.', 
+            border_color: '#c43c39'     
+}
     },
     line_historic_coast: {
         title: 'Gammel kystlinje (1870-1899)',
@@ -127,12 +132,39 @@ export const styles = {
     buildings_basement: {
         title: 'Bygninger med kælder',
         fill_color: '#d94b54', stroke_color: 'rgb(255,0,0)', stroke_width: 1,
-        fill_alpha: 0.50, max_resolution: 3, z_index: 2
+        fill_alpha: 0.50, max_resolution: 3, z_index: 2,
+        info_box: {
+            title: 'Bygninger med kælder',          
+            text:  'Zoom ind for at aktivere.', 
+            border_color: '#c43c39'     
+}
     },
     buildings_post1973: {
         title: 'Bygninger opført efter 1973',
         fill_color: '#838fe4', stroke_color: 'rgb(13,0,199)', stroke_width: 1,
-        fill_alpha: 0.50, max_resolution: 3, z_index: 2
+        fill_alpha: 0.50, max_resolution: 3, z_index: 2,
+        info_box: {
+            title: 'Bygninger opført efter 1973',          
+            text:  'Zoom ind for at aktivere.', 
+            border_color: '#c43c39'     
+}
+    },
+    fredede_bygninger: {
+        title: 'Fredede bygninger',
+        field: 'byg070Fredning',
+        categories: [
+            { value: '1', fill_color: '#81232c', label: 'Bevaringsvurderet 1' },
+            { value: '2', fill_color: '#81232c', label: 'Bevaringsvurderet 2' },
+            { value: '3', fill_color: '#81232c', label: 'Bevaringsvurderet 3' },
+            { value: '4', fill_color: '#f79d92', label: 'Bevaringsvurderet 4' },
+            { value: '5', fill_color: '#f79d92', label: 'Bevaringsvurderet 5' },
+            { value: '6', fill_color: '#f79d92', label: 'Bevaringsvurderet 6' },
+            { value: '7', fill_color: '#4c8ab1', label: 'Bevaringsvurderet 7' },
+            { value: '8', fill_color: '#4c8ab1', label: 'Bevaringsvurderet 8' },
+            { value: '9', fill_color: '#4c8ab1', label: 'Bevaringsvurderet 9' },
+        ],
+        default_fill_color: '#999999', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
     },
     buildings_use: {
         title: 'Bygningsanvendelse',
@@ -156,7 +188,12 @@ export const styles = {
             { value: 'Faldefærdige og ukendte bygninger',                                  fill_color: '#f5f6f8', label: 'Faldefærdige og ukendte bygninger' },
         ],
         default_fill_color: '#999999', stroke_color: '#ffffff', stroke_width: 0,
-        fill_alpha: 0.85, max_resolution: 3, z_index: 6
+        fill_alpha: 0.85, max_resolution: 3, z_index: 6,
+        info_box: {
+            title: 'Bygningsanvendelse',          
+            text:  'Zoom ind for at aktivere.', 
+            border_color: '#c43c39'     
+}
     },
 
     // ================================================================
@@ -263,7 +300,17 @@ export const styles = {
             { field: 'ww',   label: 'Tørvejr' },
             { field: 'rain', label: 'Regnvand' },
             { field: 'uz',   label: 'Dræn' },
-        ]
+        ],
+        info_box: {
+            title: 'Pumpede vandfraktioner',
+            border_color: '#c43c39',           
+            legend: [
+                { color: '#83d585', label: 'Indsivning' },
+                { color: '#f9b5b3', label: 'Tørvejr'       },
+                { color: '#163b91', label: 'Regnvand'       },
+                { color: '#84ccfa', label: 'Dræn'   },
+                    ], 
+}
     },
 
     // ================================================================
@@ -415,12 +462,12 @@ export const styles = {
 
     // Herlev
     Borgerhenvendelser: {
-        title: 'Borgerhenvendelser, klik på overflade for yderligere info',
+        title: 'Borgerhenvendelser, Elverparken og Tornerosevej',
         field: "Adresse",
         categories: [
-            { value: "Elverparken", stroke_color: "#a0dc5c", fill_color: "#00000000", label: "Elverparken" },
-            { value: "Tornerosevej 17-63", stroke_color: "#f1ba23", fill_color: "#00000000", label: "Tornerosevej 17-63" },
-            { value: "Tornerosevej 75-111", stroke_color: "#f1ba23", fill_color: "#00000000", label: "Tornerosevej 75-111" },
+            { value: "Elverparken", stroke_color: "#a0dc5c", fill_color: "#a0dc5c", label: "Elverparken" },
+            { value: "Tornerosevej 17-63", stroke_color: "#f1ba23", fill_color: "#f1ba23", label: "Tornerosevej 17-63" },
+            { value: "Tornerosevej 75-111", stroke_color: "#f1ba23", fill_color: "#f1ba23", label: "Tornerosevej 75-111" },
         ],
         default_fill_color: "#999999", point_radius: 5, stroke_color: "#ffffff", stroke_width: 3,
         z_index: 2,
@@ -429,31 +476,83 @@ export const styles = {
         { field: "adresse", label: "Adresse" },
         { field: "bemærkning", label: "bemærkning" },
         { field: "klasse", label: "katagori" },
-    ]
+    ],
+    info_box: {
+            title: 'Borgerhenvendelser, Elverparken og Tornerosevej',          
+            text:  'Click på overflade for yderligere info', 
+            border_color: '#c43c39'     
+}
     },
     //herlev specifikke undersøgelsesområder
     musikkvarteret:{
         title: 'Musikkvarteret',
-        field: "bemærkning",
         fill_color: '#f1bd7e00', fill_alpha: 1, stroke_color: 'rgb(255, 0, 0)', stroke_width: 2,
         z_index: 1,
-        attributeTitleField: "attributter",
-            attributes: [
-        { field: "bemærkning", label: "Borgerhenvendelser i området" },
-    ]
+        info_box: {
+            title: 'Borgerhenvendelser i Musikkvarteret',          
+            list: [
+                    'Problemer med grundvand i kælder (40 gange)',
+                    'Vand i kælderskakt', 
+                    'Dræn ikke nok - vand i kælder',
+                    '3 cm vand i kælder',
+                    'Jordfaldshul - ejer bygger nyt hus',
+                    'Vand i kælder - opfugtede vægge året rundt',
+                    'Vand og svamp i kælder - pumper 3 m3/døgn til kloak'
+            ], 
+            border_color: '#c43c39'     
+}
     },
+
+    eventyrkvarteret:{
+        title: 'Eventyrkvarteret',
+        fill_color: '#f1bd7e00', fill_alpha: 1, stroke_color: 'rgb(255, 0, 0)', stroke_width: 2,
+        z_index: 1,
+        info_box: {
+            title: 'Borgerhenvendelser i Eventyrkvarteret',          
+            list: [
+                    'Underminineret - materiale skyllet væk af grundvand',
+                    '2011 oversvømmet kælder fra kloak og grundvand', 
+            ], 
+            border_color: '#c43c39'     
+}
+    },
+
+    erhvervskvarteret:{
+        title: 'Erhvervskvarteret',
+        fill_color: '#f1bd7e00', fill_alpha: 1, stroke_color: 'rgb(255, 0, 0)', stroke_width: 2,
+        z_index: 1,
+        info_box: {
+            title: 'Borgerhenvendelser i Erhvervskvarteret',          
+            list: [
+                    'Opstigende vand i kælder',
+                    '2012 - virksomhed oplyste at de har opstigende vand i ejendommen', 
+            ], 
+            border_color: '#c43c39'     
+}
+    },    
+
 
     // København
     Matrikler_med_draen: {
         title: 'Matrikler med dræn',
         fill_color: '#f1bd7e', fill_alpha: 0.85, stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
         z_index: 2, max_resolution: 4,
+        info_box: {
+            title: 'Matrikler med dræn',          
+            text:  'Zoom ind for at aktivere.', 
+            border_color: '#c43c39'     
+}
     },
 
     Matrikler_med_lokal_nedsivning: {
         title: 'Matrikler med lokal nedsivning',
         fill_color: '#8ebdc6', fill_alpha: 0.85, stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
         z_index: 2, max_resolution: 4,
+        info_box: {
+            title: 'Matrikler med lokal nedsivning',          
+            text:  'Zoom ind for at aktivere.', 
+            border_color: '#c43c39'     
+}
     },
 
 
@@ -461,5 +560,10 @@ export const styles = {
         title: 'Nedsivningsanlæg',
         fill_color: '#ded031', fill_alpha: 0.85, stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
         z_index: 2, max_resolution: 4,
+        info_box: {
+            title: 'Nedsivningsanlæg',          
+            text:  'Zoom ind for at aktivere.', 
+            border_color: '#c43c39'     
+}
     },
 };
