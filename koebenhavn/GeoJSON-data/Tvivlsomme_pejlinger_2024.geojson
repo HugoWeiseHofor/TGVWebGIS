@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "Tvivlsomme_pejlinger_2024",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::25832" } },
+"features": [
+{ "type": "Feature", "properties": { "Kilde": "HOFOR", "Punktnr_": "MUS015p247", "DGU_Nr_": "200.13769", "Indtagsnr_": "1", "X": 716860.471, "Y": 6179770.629, "Dato": "2024-04-03", "Pejlekote": 9.35 }, "geometry": { "type": "Point", "coordinates": [ 716860.470999999903142, 6179770.629000000655651 ] } },
+{ "type": "Feature", "properties": { "Kilde": "Awell", "Punktnr_": "RE12", "DGU_Nr_": "201.16670", "Indtagsnr_": "1", "X": 725631.28, "Y": 6178885.5, "Dato": "2024-04-03", "Pejlekote": -0.1 }, "geometry": { "type": "Point", "coordinates": [ 725631.28000000026077, 6178885.5 ] } },
+{ "type": "Feature", "properties": { "Kilde": "ASØ-database", "Punktnr_": "B5453", "DGU_Nr_": null, "Indtagsnr_": "1", "X": 729227.12, "Y": 6170955.41, "Dato": "2024-03-20", "Pejlekote": -2.94 }, "geometry": { "type": "Point", "coordinates": [ 729227.120000000111759, 6170955.410000000149012 ] } },
+{ "type": "Feature", "properties": { "Kilde": "ASØ-database", "Punktnr_": "B5460", "DGU_Nr_": null, "Indtagsnr_": "1", "X": 729204.45, "Y": 6170959.16, "Dato": "2024-03-20", "Pejlekote": -3.37 }, "geometry": { "type": "Point", "coordinates": [ 729204.450000000186265, 6170959.160000000149012 ] } },
+{ "type": "Feature", "properties": { "Kilde": "ASØ-database", "Punktnr_": "B5477", "DGU_Nr_": null, "Indtagsnr_": "1", "X": 729395.75, "Y": 6170931.91, "Dato": "2024-03-20", "Pejlekote": -3.87 }, "geometry": { "type": "Point", "coordinates": [ 729395.75, 6170931.910000000149012 ] } },
+{ "type": "Feature", "properties": { "Kilde": "ASØ-database", "Punktnr_": "B5478", "DGU_Nr_": null, "Indtagsnr_": "1", "X": 729420.62, "Y": 6170900.41, "Dato": "2024-03-20", "Pejlekote": -3.78 }, "geometry": { "type": "Point", "coordinates": [ 729420.620000000111759, 6170900.410000000149012 ] } },
+{ "type": "Feature", "properties": { "Kilde": "ASØ-database", "Punktnr_": "208.151", "DGU_Nr_": "208.  151", "Indtagsnr_": "1", "X": 728531.3189, "Y": 6169033.9212999996, "Dato": "2024-04-03", "Pejlekote": 0.73 }, "geometry": { "type": "Point", "coordinates": [ 728531.318900000303984, 6169033.921299999579787 ] } },
+{ "type": "Feature", "properties": { "Kilde": "ASØ-database", "Punktnr_": "B5791", "DGU_Nr_": null, "Indtagsnr_": "1", "X": 730273.62, "Y": 6171162.24, "Dato": "2024-03-18", "Pejlekote": -0.53 }, "geometry": { "type": "Point", "coordinates": [ 730273.620000000111759, 6171162.240000000223517 ] } },
+{ "type": "Feature", "properties": { "Kilde": "Rambøll-database", "Punktnr_": "C0102-1", "DGU_Nr_": "201. 6794", "Indtagsnr_": "2", "X": 723737.279, "Y": 6175067.701, "Dato": "2024-04-04", "Pejlekote": 0.79 }, "geometry": { "type": "Point", "coordinates": [ 723737.279000000096858, 6175067.700999999418855 ] } },
+{ "type": "Feature", "properties": { "Kilde": "Rambøll-database", "Punktnr_": "201.12843", "DGU_Nr_": "201.12843", "Indtagsnr_": "1", "X": 724710.0, "Y": 6175204.0, "Dato": "2024-04-11", "Pejlekote": 0.8 }, "geometry": { "type": "Point", "coordinates": [ 724710.0, 6175204.0 ] } }
+]
+}

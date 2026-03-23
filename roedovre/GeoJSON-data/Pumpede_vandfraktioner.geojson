@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "Pumpede_vandfraktioner",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::25832" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "x": 718648.72, "y": 6174526.3, "gw": 15.50139028, "uz": 7.391248276, "ww": 69.04132276, "rain": 8.066319889000001, "uw": 22.89263855 }, "geometry": { "type": "Point", "coordinates": [ 718648.71999999997206, 6174526.299999999813735 ] } },
+{ "type": "Feature", "properties": { "fid": 2, "x": 716691.34, "y": 6177307.33, "gw": 33.34281005, "uz": 6.799594549, "ww": 39.64799855, "rain": 20.21108615, "uw": 40.1424046 }, "geometry": { "type": "Point", "coordinates": [ 716691.339999999967404, 6177307.33 ] } },
+{ "type": "Feature", "properties": { "fid": 3, "x": 716510.58, "y": 6179062.76, "gw": 24.08190118, "uz": 13.19327313, "ww": 56.52108503, "rain": 6.204416757, "uw": 43.47959107 }, "geometry": { "type": "Point", "coordinates": [ 716510.57999999995809, 6179062.759999999776483 ] } },
+{ "type": "Feature", "properties": { "fid": 4, "x": 716778.5, "y": 6179379.76, "gw": 0.005291188, "uz": 30.74974867, "ww": 49.1652679, "rain": 20.08017622, "uw": 49.1652679 }, "geometry": { "type": "Point", "coordinates": [ 716778.5, 6179379.759999999776483 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "x": 716011.73, "y": 6175630.73, "gw": 14.71431239, "uz": 12.26847125, "ww": 67.4023469, "rain": 5.616716737, "uw": 32.59950038 }, "geometry": { "type": "Point", "coordinates": [ 716011.729999999981374, 6175630.730000000447035 ] } }
+]
+}
