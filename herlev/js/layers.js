@@ -79,7 +79,7 @@ export function addAllLayers(map, projection, fns) {
     const grp_borgerhenvendelser = createGroup({ title: 'Indledende udpegning af undersøgelsesområder, samt borgerhenvendelser', fold: 'close',});
 
     addCategorizedLayer(map, { ...styles.Borgerhenvendelser, folder_destination: 'GeoJSON-data/Borgerhenvendelser.geojson',visible: true, group_container: grp_borgerhenvendelser }, projection);
-    addSingleColorLayer(map, { ...styles.musikkvarteret,     folder_destination: 'GeoJSON-data/Musikkvarteret.geojson',visible: true, group_container: grp_borgerhenvendelser }, projection);
+    addSingleColorLayer(map, { ...styles.musikkvarteret,     folder_destination: 'GeoJSON-data/musikkvarteret.geojson',visible: true, group_container: grp_borgerhenvendelser }, projection);
     addSingleColorLayer(map, { ...styles.erhvervskvarteret,     folder_destination: 'GeoJSON-data/Erhvervskvarteret.geojson',visible: true, group_container: grp_borgerhenvendelser }, projection);
     addSingleColorLayer(map, { ...styles.eventyrkvarteret,     folder_destination: 'GeoJSON-data/Eventyrkvarteret.geojson',visible: true, group_container: grp_borgerhenvendelser }, projection);
 
