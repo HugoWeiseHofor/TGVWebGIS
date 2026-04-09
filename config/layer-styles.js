@@ -524,7 +524,7 @@ export const styles = {
     ],
     info_box: {
             title: 'Borgerhenvendelser, Elverparken og Tornerosevej',          
-            text:  'Click på overflade for yderligere info', 
+            text:  'klik på overflade for yderligere info', 
             border_color: '#c43c39'     
 }
     },
