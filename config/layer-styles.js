@@ -62,7 +62,7 @@ export const styles = {
         fill_alpha: 0.85, z_index: 2
     },
     habitat: {
-        title: 'Habitat områder',
+        title: 'Natura-2000 områder',
         fill_color: '#58826c', stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
         fill_alpha: 0.85, z_index: 2
     },
@@ -81,6 +81,51 @@ export const styles = {
             border_color: '#c43c39'     
 }
     },
+
+    beskyttedenaturtyper_p3: {
+        title: 'Beskyttede naturtyper - §3',
+        field: 'Natyp_navn',
+        categories: [
+            { value: 'Eng',       fill_color: '#5be845b0', label: 'Eng' },
+            { value: 'Hede',      fill_color: '#e54bd8b0', label: 'Hede' },
+            { value: 'Mose',      fill_color: '#972d18b0', label: 'Mose' },
+            { value: 'Overdrev',  fill_color: '#ffad1fb0', label: 'Overdrev' },
+            { value: 'Strandeng', fill_color: '#75d3e9b0', label: 'Strandeng' },
+            { value: 'Sø',        fill_color: '#1035c8b0', label: 'Sø' },
+            { value: 'Ukendt',    fill_color: '#999999b0', label: 'Ukendt' },
+        ],
+        default_fill_color: '#999999', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+
+    BNBO: {
+        title: 'Boringsnært beskyttelsesområde (BNBO)',
+        fill_color: '#2a47dd10', stroke_color: '#182b8c', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
+
+    OSD: {
+        title: 'Områder med særlige drikkevandsinteresser (OSD)',
+        field: 'kategori',
+        categories: [
+            { value: 'OSD',       fill_color: '#49b3ffb0', label: 'OSD' },
+        ],
+        default_fill_color: '#99999900', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+
+    bilagIVarter:{
+        title: 'Registreret bilag IV arter',
+        point_style: 'star',   // circle | square | triangle | star | cross | x
+        point_radius: 5,
+        fill_color: '#ff8800',
+        fill_alpha: 0.9,
+        stroke_color: '#ffffff',
+        stroke_width: 1,
+        geometry_type: 'point',  // tells the legend to draw a point swatch
+        z_index: 2,
+    },
+
     line_historic_coast: {
         title: 'Gammel kystlinje (1870-1899)',
         fill_color: '#4e59a0', stroke_color: '#4e59a0', fill_alpha: 1,
@@ -619,7 +664,11 @@ export const styles = {
     },    
     
 
-
+    middelalderbyen: {
+        title: 'Middelalderbyen',
+        fill_color: 'rgba(230, 103, 29, 0.58)', stroke_color: 'rgb(248, 182, 0)', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 2
+    },
 
     Matrikler_med_draen: {
         title: 'Matrikler med dræn',
