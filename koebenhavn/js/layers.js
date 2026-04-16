@@ -66,8 +66,9 @@ export function addAllLayers(map, projection, fns) {
     // ----------------------------------------------------------------
     // Borgerhenvendelser
     // ----------------------------------------------------------------
-    const grp_borgerhenvendelser = createGroup({ title: 'Borgerhenvendelser', fold: 'close' });
+    const grp_borgerhenvendelser = createGroup({ title: 'Borgerhenvendelser og indledende udpegninger', fold: 'close' });
     addSingleColorLayer(map, { ...styles.borgerhenvendelse_koebenhavn,folder_destination: 'GeoJSON-data/borgerhenvendelser.geojson',visible: false, group_container: grp_borgerhenvendelser }, projection);
+    addCategorizedLayer(map, { ...styles.indledendeudpegninger_kbh, folder_destination: 'GeoJSON-data/indledendeudpegninger_kbh.geojson', visible: true, group_container: grp_borgerhenvendelser }, projection);
 
 
 

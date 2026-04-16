@@ -578,6 +578,49 @@ export const styles = {
 
 
     // København
+
+    indledendeudpegninger_kbh: {
+        title: 'Kandidater til undersøgelsesområder til TGV',
+        field: 'id',
+        categories: [
+            { value: '1', fill_color: '#f0a890', fill_alpha: 0.65, label: ' ' },
+            { value: '2', fill_color: '#484ee4', fill_alpha: 0.65, label: 'FRB  Ågade' },
+            { value: '3', fill_color: '#16d8ea', fill_alpha: 0.65, label: 'Hillerødgade' },
+            { value: '4', fill_color: '#705a99', fill_alpha: 0.65, label: 'Vanløse' },
+            { value: '5', fill_color: '#f91f14', fill_alpha: 0.65, label: 'Vanløse' },
+            { value: '6', fill_color: '#e73fc8', fill_alpha: 0.65, label: 'HUSUM syd' },
+            { value: '7', fill_color: '#a13846', fill_alpha: 0.65, label: 'Bystævnet' },
+            { value: '8', fill_color: '#a6c04f', fill_alpha: 0.65, label: 'Tingbjerg' },
+            { value: '9', fill_color: '#c99628', fill_alpha: 0.65, label: 'Grønnemose' },
+            { value: '10', fill_color: '#e719f2', fill_alpha: 0.65, label: 'Horsebakke' },
+            { value: '11', fill_color: '#84368b', fill_alpha: 0.65, label: 'HF Brønshøj' },
+            { value: '12', fill_color: '#d6308b', fill_alpha: 0.65, label: 'Pilesvinget' },
+            { value: '13', fill_color: '#ffc037', fill_alpha: 0.65, label: 'Hulgårdsvej' },
+            { value: '14', fill_color: '#f02d37', fill_alpha: 0.65, label: 'Lykkebo' },
+            { value: '15', fill_color: '#46ded6', fill_alpha: 0.65, label: 'Følager' },
+            { value: '16', fill_color: '#dfed16', fill_alpha: 0.65, label: 'Enghavevej' },
+            { value: '17', fill_color: '#949c22', fill_alpha: 0.65, label: 'HF Frederi' },
+            { value: '18', fill_color: '#55ed85', fill_alpha: 0.65, label: 'Bispebjerg' },
+            { value: '19', fill_color: '#542cf1', fill_alpha: 0.65, label: 'Rymarksvej' },
+            { value: '20', fill_color: '#952140', fill_alpha: 0.65, label: 'HF KOngedy' },
+            { value: '21', fill_color: '#34cb00', fill_alpha: 0.65, label: 'Bella C' },
+        ],
+        default_fill_color: '#999999', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1,
+        attributeTitleField: 'attributter',
+    attributes: [
+        { field: 'Beskrivels', label: 'Navn' },
+    ],
+        info_box: {
+            title: 'Kandidater til undersøgelsesområder til TGV',          
+            text:  'Tryk for info.', 
+            border_color: '#c43c39'     
+}
+    },    
+    
+
+
+
     Matrikler_med_draen: {
         title: 'Matrikler med dræn',
         fill_color: '#f1bd7e', fill_alpha: 0.85, stroke_color: 'rgba(0,0,0,1)', stroke_width: 0,
