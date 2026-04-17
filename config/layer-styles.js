@@ -193,7 +193,8 @@ export const styles = {
             title: 'Bygninger opført efter 1973',          
             text:  'Zoom ind for at aktivere.', 
             border_color: '#c43c39'     
-}
+},
+
     },
     fredede_bygninger: {
         title: 'Fredede bygninger',
