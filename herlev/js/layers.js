@@ -41,6 +41,10 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map, { ...styles.protected_areas, folder_destination: 'GeoJSON-data/Fredede_omraader.geojson',                    visible: false,               group_container: grp_fredede }, projection);
     addSingleColorLayer(map, { ...styles.wetlands_1870,   folder_destination: 'GeoJSON-data/Enge_og_Moser_(1870-1899).geojson',           visible: false,               group_container: grp_fredede }, projection);
     addSingleColorLayer(map, { ...styles.wetlands_1700,   folder_destination: 'GeoJSON-data/Vaadbundsomraader_omkring_1700-tallet.geojson',visible: false,              group_container: grp_fredede }, projection);
+    addCategorizedLayer(map, { ...styles.OSD, folder_destination: 'GeoJSON-data/Herlev_omrder_med_srlige_drikkevandsinteresser_osd.geojson', visible: false, group_container: grp_fredede }, projection);
+    addSingleColorLayer(map, { ...styles.BNBO,            folder_destination: 'GeoJSON-data/Herlev_boringsnrt_beskyttelsesomrde_bnbo.geojson',              visible: false,               group_container: grp_fredede }, projection);
+    addSingleColorLayer(map, { ...styles.bilagIVarter, folder_destination: 'GeoJSON-data/Herlev_bilag4arter.geojson', visible: false, group_container: grp_fredede }, projection);
+    addCategorizedLayer(map, { ...styles.beskyttedenaturtyper_p3, folder_destination: 'GeoJSON-data/Herlev_bekyttedenaturtyperparagraf3.geojson', visible: false, group_container: grp_fredede }, projection);
 
     const grp_jordforurening = createGroup({ title: 'Jordforurening', fold: 'close', depth: 1, container: grp_MaskeIKKEkort });
     addSingleColorLayer(map, { ...styles.soil_v1, folder_destination: 'GeoJSON-data/Jordforurening_videnniveau_1_(V1).geojson', visible: false, group_container: grp_jordforurening }, projection);

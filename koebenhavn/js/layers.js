@@ -46,7 +46,6 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map, { ...styles.bilagIVarter, folder_destination: 'GeoJSON-data/bilag4arter.geojson', visible: false, group_container: grp_fredede }, projection);
     addCategorizedLayer(map, { ...styles.beskyttedenaturtyper_p3, folder_destination: 'GeoJSON-data/beskyttedenaturtyperp3.geojson', visible: false, group_container: grp_fredede }, projection);
 
-
     addSingleColorLayer(map, { ...styles.wetlands_1870,   folder_destination: 'GeoJSON-data/Enge_og_Moser_(1870-1899).geojson',            visible: false,               group_container: grp_fredede }, projection);
     addSingleColorLayer(map, { ...styles.wetlands_1700,   folder_destination: 'GeoJSON-data/Vaadbundsomraader_omkring_1700-tallet.geojson',visible: false,              group_container: grp_fredede }, projection);
     addSingleColorLayer(map, { ...styles.line_historic_coast, folder_destination: 'GeoJSON-data/Gammel_kystlinje_(1870-1899).geojson',     visible: false,               group_container: grp_fredede }, projection);
@@ -77,8 +76,6 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map, { ...styles.borgerhenvendelse_koebenhavn,folder_destination: 'GeoJSON-data/borgerhenvendelser.geojson',visible: false, group_container: grp_borgerhenvendelser }, projection);
     addCategorizedLayer(map, { ...styles.indledendeudpegninger_kbh, folder_destination: 'GeoJSON-data/indledendeudpegninger_kbh.geojson', visible: true, group_container: grp_borgerhenvendelser }, projection);
 
-
-
     // ----------------------------------------------------------------
     // Skadesomkostninger
     // ----------------------------------------------------------------
@@ -99,7 +96,7 @@ export function addAllLayers(map, projection, fns) {
     const grp_Bygningsattributter = createGroup({ title: 'Bygningsattributter', fold: 'close', depth: 1, container: grp_analyserdata });
     addSingleColorLayer(map,  { ...styles.buildings_basement, folder_destination: 'GeoJSON-data/Bygninger_med_kaelder.geojson',         visible: false,  group_container: grp_Bygningsattributter }, projection);
     addSingleColorLayer(map,  { ...styles.buildings_post1973, folder_destination: 'GeoJSON-data/Bygninger_opfoert_efter_1973.geojson',  visible: false,  group_container: grp_Bygningsattributter }, projection);
-    addCategorizedLayer(map,  { ...styles.buildings_use,      folder_destination: 'GeoJSON-data/Bygningsanvendelse.geojson',            visible: false,  group_container: grp_Bygningsattributter }, projection);
+    addCategorizedLayer(map,  { ...styles.buildings_use,      folder_destination: 'GeoJSON-data/Bygningsanvendelse1.geojson',            visible: false,  group_container: grp_Bygningsattributter }, projection);
     addCategorizedLayer(map,  { ...styles.fredede_bygninger,      folder_destination: 'GeoJSON-data/fredede_bygninger.geojson',         visible: false,               group_container: grp_Bygningsattributter }, projection);
 
 

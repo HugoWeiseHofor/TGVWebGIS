@@ -40,6 +40,10 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map, { ...styles.protected_areas, folder_destination: 'GeoJSON-data/Fredede_omraader.geojson',                    visible: false,               group_container: grp_fredede }, projection);
     addSingleColorLayer(map, { ...styles.wetlands_1870,   folder_destination: 'GeoJSON-data/Enge_og_Moser_(1870-1899).geojson',           visible: false,               group_container: grp_fredede }, projection);
     addSingleColorLayer(map, { ...styles.wetlands_1700,   folder_destination: 'GeoJSON-data/Vaadbundsomraader_omkring_1700-tallet.geojson',visible: false,              group_container: grp_fredede }, projection);
+    addCategorizedLayer(map, { ...styles.OSD, folder_destination: 'GeoJSON-data/Roedovre_omrder_med_srlige_drikkevandsinteresser_osd.geojson', hidden: true, visible: false, group_container: grp_fredede }, projection);
+    addSingleColorLayer(map, { ...styles.BNBO,            folder_destination: 'GeoJSON-data/Roedovre_boringsnrt_beskyttelsesomrde_bnbo.geojson',              visible: false,               group_container: grp_fredede }, projection);
+    addSingleColorLayer(map, { ...styles.bilagIVarter, folder_destination: 'GeoJSON-data/Roedovre_bilag4arter.geojson', visible: false, group_container: grp_fredede }, projection);
+    addCategorizedLayer(map, { ...styles.beskyttedenaturtyper_p3, folder_destination: 'GeoJSON-data/Roedovre_bekyttedenaturtyperparagraf3.geojson', visible: false, group_container: grp_fredede }, projection);
 
     const grp_jordforurening = createGroup({ title: 'Jordforurening', fold: 'close', depth: 1, container: grp_MaskeIKKEkort });
     addSingleColorLayer(map, { ...styles.soil_v1, folder_destination: 'GeoJSON-data/Jordforurening_videnniveau_1_(V1).geojson', visible: false, group_container: grp_jordforurening }, projection);
@@ -76,7 +80,7 @@ export function addAllLayers(map, projection, fns) {
     // ----------------------------------------------------------------
     const grp_analyserdata = createGroup({ title: 'Analyser og andre data', fold: 'close' });
 
-    const grp_Bygningsattributter = createGroup({ title: 'Bygningsattributter', fold: 'close', depth: 1, hidden: true, container: grp_analyserdata });
+    const grp_Bygningsattributter = createGroup({ title: 'Bygningsattributter', fold: 'close', depth: 1, container: grp_analyserdata });
     addSingleColorLayer(map,  { ...styles.buildings_basement, folder_destination: 'GeoJSON-data/Bygninger_med_kaelder.geojson',        visible: false,                group_container: grp_Bygningsattributter }, projection);
     addSingleColorLayer(map,  { ...styles.buildings_post1973, folder_destination: 'GeoJSON-data/Bygninger_opfoert_efter_1973.geojson',  visible: false,               group_container: grp_Bygningsattributter }, projection);
     addCategorizedLayer(map,  { ...styles.buildings_use,      folder_destination: 'GeoJSON-data/Bygningsanvendelse.geojson',            visible: false,               group_container: grp_Bygningsattributter }, projection);
