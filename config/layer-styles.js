@@ -538,6 +538,29 @@ export const styles = {
     },
 
     // ================================================================
+    // Lokalplaner
+    // ================================================================
+
+    lokalplaner: {
+        title: 'Lokalplaner (Vedtaget)',
+        field: 'anvendelsegenerel',
+        categories: [
+            { value: 'Boligområde', fill_color: '#bf8058', fill_alpha: 0.85, label: 'Boligområde' },
+            { value: 'Blandet bolig og erhverv', fill_color: '#dc7c7c', fill_alpha: 0.85, label: 'Blandet bolig og erhverv' },
+            { value: 'Erhvervsområde', fill_color: '#86d6d7', fill_alpha: 0.85, label: 'Erhvervsområde' },
+            { value: 'Centerområde', fill_color: '#dd86e6', fill_alpha: 0.85, label: 'Centerområde' },
+            { value: 'Rekreativt område', fill_color: '#7be363', fill_alpha: 0.85, label: 'Rekreativt område' },
+            { value: 'Sommerhusområde', fill_color: '#cec39a', fill_alpha: 0.85, label: 'Sommerhusområde' },
+            { value: 'Område til offentlige formål', fill_color: '#d7d851', fill_alpha: 0.85, label: 'Område til offentligt formål' },
+            { value: 'Tekniske anlæg', fill_color: '#7a9798', fill_alpha: 0.85, label: 'Teknisk anlæg' },
+            { value: 'Landområde', fill_color: '#638b5c', fill_alpha: 0.85, label: 'Landområde' },
+            { value: 'Andet', fill_color: '#a4a4a5', fill_alpha: 0.85, label: 'Andet' },
+            { value: 'Anvendelse ikke reguleret', fill_color: '#9cabc1', fill_alpha: 0.85, label: 'Anvendelse ikke reguleret' },
+        ],
+        default_fill_color: '#99999900', stroke_color: '#ffffff00', stroke_width: 0,
+        fill_alpha: 0.85, z_index: 1
+    },
+    // ================================================================
     // Omrids
     // ================================================================
     municipality_outline: {

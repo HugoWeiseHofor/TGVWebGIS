@@ -138,6 +138,10 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map, { ...styles.Nedsivningsanlaeg,              folder_destination: 'GeoJSON-data/nedsivningsanlaeg.geojson',                  visible: false, group_container: grp_Loakl_draening_og_nedsivning }, projection);
     addSingleColorLayer(map, { ...styles.Matrikler_med_lokal_nedsivning, folder_destination: 'GeoJSON-data/matrikler_med_lokal_nedsivning.geojson',     visible: false, group_container: grp_Loakl_draening_og_nedsivning }, projection);
 
+    const grp_lokalplaner = createGroup({ title: 'Lokalplaner (vedtaget)', fold: 'close', depth: 1, container: grp_analyserdata });
+    addCategorizedLayer(map, { ...styles.lokalplaner, folder_destination: 'GeoJSON-data/Koebenhavn_lokalplaner.geojson', visible: false, group_container: grp_lokalplaner }, projection);
+
+
     const grp_Risikohavvandindsivning = createGroup({ title: 'Risiko for havvandsindsivning', fold: 'close', depth: 1, container: grp_analyserdata });
     addCategorizedLayer(map, { ...styles.seawater_intrusion, folder_destination: 'GeoJSON-data/Risiko_for_havvandsindsivning.geojson', visible: false, group_container: grp_Risikohavvandindsivning }, projection);
 

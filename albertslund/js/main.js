@@ -47,10 +47,6 @@ view.fit(extent, { padding: [300, 300, 300, 600], minZoom: 13 });
 
 // Initialize Layer Switcher
 initLayerSwitcher();
-
-// Register OSM base layer
-registerLayer(map.getLayers().item(0), 'OpenStreetMap', 'base');
-
 // Load WMTS
 fetch('https://api.dataforsyningen.dk/topo_skaermkort_daempet_DAF?service=WMTS&request=GetCapabilities&token=b13445c09727289ea77913374cac72ce')
     .then(resp => resp.text())
@@ -66,6 +62,10 @@ fetch('https://api.dataforsyningen.dk/topo_skaermkort_daempet_DAF?service=WMTS&r
         map.addLayer(wmtsLayer);
         registerLayer(wmtsLayer, 'Skærmkort (dæmpet)', 'base');
     });
+
+// Register OSM base layer
+registerLayer(map.getLayers().item(0), 'OpenStreetMap', 'base');
+
 
 // ==========================
 // Initialize Popup
