@@ -87,6 +87,10 @@ export function addAllLayers(map, projection, fns) {
     addSingleColorLayer(map,  { ...styles.buildings_post1973, folder_destination: 'GeoJSON-data/Bygninger_opfoert_efter_1973.geojson',  visible: false,               group_container: grp_Bygningsattributter }, projection);
     addCategorizedLayer(map,  { ...styles.buildings_use,      folder_destination: 'GeoJSON-data/Bygningsanvendelse.geojson',            visible: false,               group_container: grp_Bygningsattributter }, projection);
 
+    const grp_lokalplaner = createGroup({ title: 'Lokalplaner (vedtaget)', fold: 'close', depth: 1, container: grp_analyserdata });
+    addCategorizedLayer(map, { ...styles.lokalplaner, folder_destination: 'GeoJSON-data/Vallensbaek_lokalplaner.geojson', visible: false, group_container: grp_lokalplaner }, projection);
+
+
     const grp_risikoTGVGEO = createGroup({ title: 'Risiko for terrænnært grundvand (GEO)', fold: 'close', depth: 1, container: grp_analyserdata });
     addCategorizedLayer(map, { ...styles.groundwater_geo_1m, folder_destination: 'GeoJSON-data/Risiko_for_terraennaert_grundvand_1m.u.t._(GEO).geojson', visible: false, group_container: grp_risikoTGVGEO }, projection);
     addCategorizedLayer(map, { ...styles.groundwater_geo_2m, folder_destination: 'GeoJSON-data/Risiko_for_terraennaert_grundvand_2m.u.t._(GEO).geojson', visible: false, group_container: grp_risikoTGVGEO }, projection);

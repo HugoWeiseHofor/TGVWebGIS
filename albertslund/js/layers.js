@@ -89,6 +89,9 @@ const { layer: lyr_bygninger_sandsynlig, source: jsonSource_bygninger_sandsynlig
     addSingleColorLayer(map,  { ...styles.buildings_post1973, folder_destination: 'GeoJSON-data/Bygninger_opfoert_efter_1973.geojson',  visible: false, group_container: grp_Bygningsattributter }, projection);
     addCategorizedLayer(map,  { ...styles.buildings_use,      folder_destination: 'GeoJSON-data/Bygningsanvendelse.geojson',            visible: false, group_container: grp_Bygningsattributter }, projection);
 
+    const grp_lokalplaner = createGroup({ title: 'Lokalplaner (vedtaget)', fold: 'close', depth: 1, container: grp_analyserdata });
+    addCategorizedLayer(map, { ...styles.lokalplaner, folder_destination: 'GeoJSON-data/Albertslund_lokalplaner.geojson', visible: false, group_container: grp_lokalplaner }, projection);
+
 
     const grp_risikoTGVGEO = createGroup({ title: 'Risiko for terrænnært grundvand (GEO)', fold: 'close', depth: 1, container: grp_analyserdata });
     addCategorizedLayer(map, { ...styles.groundwater_geo_1m, folder_destination: 'GeoJSON-data/Terraennaert_grundvand_1m_(GEO).geojson', visible: false, group_container: grp_risikoTGVGEO }, projection);
