@@ -1053,3 +1053,37 @@ export function addWMSLayer(map, config) {
 
     return { layer, source };
 }
+// ==========================
+// addLayer — Universal dispatcher
+// ==========================
+//
+// Single entry point for all layer types. The style object in layer-styles.js
+// declares a `type` field; layers.js calls addLayer() with folder_destination,
+// visible, and group_container spread on top.
+//
+// Usage in layers.js:
+//   addLayer(map, { ...styles.my_style, folder_destination: '...', visible: true, group_container: grp }, projection);
+//
+// Valid type values:
+//   'singleColor'    → addSingleColorLayer
+//   'thematic'       → addThematicLayer
+//   'categorized'    → addCategorizedLayer
+//   'pieChart'       → addPieChartLayer
+//   'graduatedLine'  → addGraduatedLineLayer
+//   'classedPoint'   → addClassedPointLayer
+//   'wms'            → addWMSLayer  (projection argument is ignored — WMS uses map view projection)
+//
+export function addLayer(map, config, projection) {
+    switch (config.type) {
+        case 'singleColor':   return addSingleColorLayer(map, config, projection);
+        case 'thematic':      return addThematicLayer(map, config, projection);
+        case 'categorized':   return addCategorizedLayer(map, config, projection);
+        case 'pieChart':      return addPieChartLayer(map, config, projection);
+        case 'graduatedLine': return addGraduatedLineLayer(map, config, projection);
+        case 'classedPoint':  return addClassedPointLayer(map, config, projection);
+        case 'wms':           return addWMSLayer(map, config);
+        default:
+            console.error(`[addLayer] Unknown layer type: "${config.type}". Expected one of: singleColor, thematic, categorized, pieChart, graduatedLine, classedPoint, wms.`);
+            return null;
+    }
+}
