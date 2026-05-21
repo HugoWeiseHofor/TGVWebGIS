@@ -8,6 +8,7 @@ export function addAllLayers(map, projection, fns) {
         addPieChartLayer,
         addGraduatedLineLayer,
         addClassedPointLayer,
+        addClassedIconLayer,
         createGroup,
     } = fns;
 
@@ -19,13 +20,13 @@ export function addAllLayers(map, projection, fns) {
             case 'pieChart':      return addPieChartLayer(map, config, projection);
             case 'graduatedLine': return addGraduatedLineLayer(map, config, projection);
             case 'classedPoint':  return addClassedPointLayer(map, config, projection);
+            case 'classedIcon':  return addClassedIconLayer(map, config, projection);
             case 'wms':           return fns.addWMSLayer(map, config);
             default:
                 console.error(`[addLayer] Unknown type: "${config.type}"`);
                 return null;
         }
     }
-
     // ----------------------------------------------------------------
     // "IKKE" Kort
     // ----------------------------------------------------------------
